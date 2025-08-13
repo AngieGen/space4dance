@@ -504,6 +504,12 @@ body {
   z-index: 3;
 }
 
+@media (max-width: 768px) {
+  .project-video {
+    filter: grayscale(0%);
+  }
+}
+
 /* Statistics Section */
 .stats-section {
   background: linear-gradient(
