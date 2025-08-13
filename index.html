@@ -472,7 +472,6 @@
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </section>
@@ -482,422 +481,374 @@
     <section class="contacts-section"></section>
     <!-- Footer Section -->
 
-    <script>
-      // Carousel functionality
-      class Carousel {
-        constructor() {
-          this.slides = document.querySelectorAll(".carousel-slide");
-          this.currentSlide = 0;
-          this.totalSlides = this.slides.length;
-          this.autoPlayInterval = null;
+     <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            console.log("DOM loaded, initializing...");
 
-          this.init();
-        }
+            // Carousel functionality
+            class Carousel {
+                constructor() {
+                    this.slides = document.querySelectorAll(".carousel-slide");
+                    this.currentSlide = 0;
+                    this.totalSlides = this.slides.length;
+                    this.autoPlayInterval = null;
 
-        init() {
-          // Auto-play
-          this.startAutoPlay();
-        }
+                    if (this.slides.length > 0) {
+                        this.init();
+                    }
+                }
 
-        goToSlide(slideIndex) {
-          // Remove active class from current slide and title
-          this.slides[this.currentSlide].classList.remove("active");
-          this.slides[this.currentSlide]
-            .querySelector(".event-title")
-            .classList.remove("active");
+                init() {
+                    this.startAutoPlay();
+                }
 
-          // Update current slide
-          this.currentSlide = slideIndex;
+                goToSlide(slideIndex) {
+                    if (this.slides[this.currentSlide]) {
+                        this.slides[this.currentSlide].classList.remove("active");
+                        const currentTitle = this.slides[this.currentSlide].querySelector(".event-title");
+                        if (currentTitle) {
+                            currentTitle.classList.remove("active");
+                        }
+                    }
 
-          // Add active class to new slide
-          this.slides[this.currentSlide].classList.add("active");
+                    this.currentSlide = slideIndex;
 
-          // Animate title with delay
-          setTimeout(() => {
-            this.slides[this.currentSlide]
-              .querySelector(".event-title")
-              .classList.add("active");
-          }, 300);
-        }
-
-        nextSlide() {
-          const nextIndex = (this.currentSlide + 1) % this.totalSlides;
-          this.goToSlide(nextIndex);
-        }
-
-        startAutoPlay() {
-          this.autoPlayInterval = setInterval(() => {
-            this.nextSlide();
-          }, 4000); // Change slide every 4 seconds
-        }
-
-        stopAutoPlay() {
-          if (this.autoPlayInterval) {
-            clearInterval(this.autoPlayInterval);
-          }
-        }
-      }
-
-      // Initialize carousel when DOM is loaded
-      document.addEventListener("DOMContentLoaded", () => {
-        new Carousel();
-        new StatsCounter();
-        new EventsManager();
-
-        // Mobile menu functionality
-        const hamburger = document.querySelector(".hamburger");
-        const mobileMenu = document.querySelector(".mobile-menu");
-        const mobileClose = document.querySelector(".mobile-close");
-        const body = document.body;
-
-        // Открыть меню
-        hamburger.addEventListener("click", () => {
-          hamburger.classList.add("active");
-          mobileMenu.classList.add("active");
-          body.style.overflow = "hidden";
-        });
-
-        // Закрыть меню (крестик)
-        mobileClose.addEventListener("click", () => {
-          hamburger.classList.remove("active");
-          mobileMenu.classList.remove("active");
-          body.style.overflow = "";
-        });
-
-        // Close mobile menu when clicking on links
-        document
-          .querySelectorAll(".mobile-nav-links a:not(.mobile-dropdown-toggle)")
-          .forEach((link) => {
-            link.addEventListener("click", () => {
-              hamburger.classList.remove("active");
-              mobileMenu.classList.remove("active");
-              body.style.overflow = "";
-            });
-          });
-
-        // Mobile dropdown functionality
-        const mobileDropdownToggle = document.querySelector(
-          ".mobile-dropdown-toggle"
-        );
-        const mobileDropdownMenu = document.querySelector(
-          ".mobile-dropdown-menu"
-        );
-        const mobileDropdownArrow =
-          mobileDropdownToggle.querySelector(".dropdown-arrow");
-
-        mobileDropdownToggle.addEventListener("click", () => {
-          mobileDropdownMenu.classList.toggle("active");
-          mobileDropdownArrow.style.transform =
-            mobileDropdownMenu.classList.contains("active")
-              ? "rotate(180deg)"
-              : "rotate(0deg)";
-        });
-
-        // Close mobile menu when clicking on dropdown links
-        document.querySelectorAll(".mobile-dropdown-menu a").forEach((link) => {
-          link.addEventListener("click", () => {
-            hamburger.classList.remove("active");
-            mobileMenu.classList.remove("active");
-            body.style.overflow = "";
-          });
-        });
-      });
-
-       // Debug информация
-        const debugInfo = document.getElementById('debugInfo');
-        const deviceType = document.getElementById('deviceType');
-        const touchSupport = document.getElementById('touchSupport');
-        const videosLoaded = document.getElementById('videosLoaded');
-
-        const isMobile = window.matchMedia("(max-width: 768px)").matches;
-        const isTouchDevice = 'ontouchstart' in window;
-
-        deviceType.textContent = isMobile ? 'Mobile' : 'Desktop';
-        touchSupport.textContent = isTouchDevice ? 'Yes' : 'No';
-
-        let loadedCount = 0;
-
-        // Исправленная функциональность видео
-        document.querySelectorAll(".project-card").forEach((card, index) => {
-            const video = card.querySelector(".project-video");
-
-            if (!video) return;
-
-            // Принудительные атрибуты для мобильных
-            video.setAttribute('webkit-playsinline', '');
-            video.setAttribute('x-webkit-airplay', 'allow');
-            
-            // Обработчики событий видео
-            video.addEventListener('loadstart', () => {
-                console.log(`Video ${index + 1}: Started loading`);
-            });
-
-            video.addEventListener('canplay', () => {
-                console.log(`Video ${index + 1}: Can play`);
-                loadedCount++;
-                videosLoaded.textContent = loadedCount;
-                
-                // Принудительный запуск для мобильных
-                if (isMobile || isTouchDevice) {
-                    video.play().then(() => {
-                        console.log(`Video ${index + 1}: Playing successfully on mobile`);
-                    }).catch((error) => {
-                        console.log(`Video ${index + 1}: Mobile autoplay blocked, trying manual start...`, error);
+                    if (this.slides[this.currentSlide]) {
+                        this.slides[this.currentSlide].classList.add("active");
                         
-                        // Если автовоспроизведение заблокировано, попробуем при первом взаимодействии
-                        const enableAutoplay = () => {
-                            video.play().then(() => {
-                                console.log(`Video ${index + 1}: Started after user interaction`);
-                            }).catch(e => console.log(`Video ${index + 1}: Still failed:`, e));
-                            
-                            // Удаляем обработчик после первого использования
-                            document.removeEventListener('touchstart', enableAutoplay);
-                            document.removeEventListener('click', enableAutoplay);
-                        };
-                        
-                        document.addEventListener('touchstart', enableAutoplay, { once: true });
-                        document.addEventListener('click', enableAutoplay, { once: true });
+                        setTimeout(() => {
+                            const newTitle = this.slides[this.currentSlide].querySelector(".event-title");
+                            if (newTitle) {
+                                newTitle.classList.add("active");
+                            }
+                        }, 300);
+                    }
+                }
+
+                nextSlide() {
+                    const nextIndex = (this.currentSlide + 1) % this.totalSlides;
+                    this.goToSlide(nextIndex);
+                }
+
+                startAutoPlay() {
+                    this.autoPlayInterval = setInterval(() => {
+                        this.nextSlide();
+                    }, 4000);
+                }
+
+                stopAutoPlay() {
+                    if (this.autoPlayInterval) {
+                        clearInterval(this.autoPlayInterval);
+                    }
+                }
+            }
+
+            // StatsCounter class
+            class StatsCounter {
+                constructor() {
+                    this.counters = document.querySelectorAll(".stat-item");
+                    this.hasAnimated = false;
+                    if (this.counters.length > 0) {
+                        this.init();
+                    }
+                }
+
+                init() {
+                    this.createObserver();
+                }
+
+                createObserver() {
+                    const options = {
+                        threshold: 0.3,
+                        rootMargin: "0px 0px -50px 0px",
+                    };
+
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting && !this.hasAnimated) {
+                                this.animateCounters();
+                                this.hasAnimated = true;
+                            }
+                        });
+                    }, options);
+
+                    const statsGrid = document.querySelector(".stats-grid");
+                    if (statsGrid) {
+                        observer.observe(statsGrid);
+                    }
+                }
+
+                animateCounters() {
+                    this.counters.forEach((counter, index) => {
+                        setTimeout(() => {
+                            counter.classList.add("animate");
+                            this.countUp(counter);
+                        }, index * 200);
                     });
                 }
-            });
 
-            video.addEventListener('playing', () => {
-                console.log(`Video ${index + 1}: Actually playing now`);
-            });
+                countUp(counter) {
+                    const target = parseInt(counter.dataset.target);
+                    const numberElement = counter.querySelector(".stat-number");
+                    if (!numberElement) return;
 
-            video.addEventListener('error', (e) => {
-                console.error(`Video ${index + 1}: Error loading`, e);
-            });
+                    const duration = 2000;
+                    const increment = target / (duration / 16);
+                    let current = 0;
 
-            // Логика воспроизведения
-            if (isMobile || isTouchDevice) {
-                // Мобильные: пытаемся воспроизвести сразу при загрузке
-                video.load();
-                
-                // Дополнительная попытка при взаимодействии с карточкой
-                card.addEventListener('touchstart', () => {
-                    if (video.paused) {
-                        video.play().catch(e => console.log(`Touch play failed for video ${index + 1}:`, e));
+                    const timer = setInterval(() => {
+                        current += increment;
+
+                        if (current >= target) {
+                            current = target;
+                            clearInterval(timer);
+                        }
+
+                        let displayValue = Math.floor(current);
+                        if (target >= 1000) {
+                            displayValue = this.formatNumber(Math.floor(current)) + "+";
+                        }
+
+                        numberElement.textContent = displayValue;
+
+                        if (current < target) {
+                            numberElement.classList.add("counting");
+                            setTimeout(() => {
+                                numberElement.classList.remove("counting");
+                            }, 100);
+                        }
+                    }, 16);
+                }
+
+                formatNumber(num) {
+                    if (num >= 1000) {
+                        return (num / 1000).toFixed(0) + "K";
                     }
-                }, { passive: true });
+                    return num.toString();
+                }
+            }
 
-                card.addEventListener('click', () => {
-                    if (video.paused) {
-                        video.play().catch(e => console.log(`Click play failed for video ${index + 1}:`, e));
+            // CountdownTimer class
+            class CountdownTimer {
+                constructor() {
+                    this.timers = document.querySelectorAll(".countdown-timer");
+                    if (this.timers.length > 0) {
+                        this.init();
                     }
+                }
+
+                init() {
+                    this.timers.forEach((timer) => {
+                        const targetDate = new Date(timer.dataset.target).getTime();
+                        this.updateTimer(timer, targetDate);
+
+                        setInterval(() => {
+                            this.updateTimer(timer, targetDate);
+                        }, 1000);
+                    });
+                }
+
+                updateTimer(timer, targetDate) {
+                    const now = new Date().getTime();
+                    const distance = targetDate - now;
+
+                    if (distance < 0) {
+                        timer.innerHTML = '<div style="color: #ef4444; font-weight: 600; font-size: 0.9rem;">Registration Closed</div>';
+                        return;
+                    }
+
+                    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+                    const daysElement = timer.querySelector(".days");
+                    const hoursElement = timer.querySelector(".hours");
+                    const minutesElement = timer.querySelector(".minutes");
+
+                    if (daysElement) daysElement.textContent = String(days).padStart(2, "0");
+                    if (hoursElement) hoursElement.textContent = String(hours).padStart(2, "0");
+                    if (minutesElement) minutesElement.textContent = String(minutes).padStart(2, "0");
+                }
+            }
+
+            // Инициализация всех классов
+            console.log("Initializing classes...");
+            new Carousel();
+            new StatsCounter();
+            new CountdownTimer();
+
+            // Mobile menu functionality
+            const hamburger = document.querySelector(".hamburger");
+            const mobileMenu = document.querySelector(".mobile-menu");
+            const mobileClose = document.querySelector(".mobile-close");
+            const body = document.body;
+
+            console.log("Mobile menu elements:", { hamburger, mobileMenu, mobileClose });
+
+            if (hamburger && mobileMenu && mobileClose) {
+                // Открыть меню
+                hamburger.addEventListener("click", () => {
+                    console.log("Hamburger clicked");
+                    hamburger.classList.add("active");
+                    mobileMenu.classList.add("active");
+                    body.style.overflow = "hidden";
                 });
 
-            } else {
-                // Десктоп: воспроизведение только при hover
-                video.pause(); // Останавливаем автовоспроизведение на десктопе
-                
-                card.addEventListener("mouseenter", () => {
-                    if (video.readyState >= 2) {
-                        video.play().catch((e) => {
-                            console.log(`Desktop hover play failed for video ${index + 1}:`, e);
+                // Закрыть меню (крестик)
+                mobileClose.addEventListener("click", () => {
+                    console.log("Close clicked");
+                    hamburger.classList.remove("active");
+                    mobileMenu.classList.remove("active");
+                    body.style.overflow = "";
+                });
+
+                // Close mobile menu when clicking on links
+                document.querySelectorAll(".mobile-nav-links a:not(.mobile-dropdown-toggle)").forEach((link) => {
+                    link.addEventListener("click", () => {
+                        hamburger.classList.remove("active");
+                        mobileMenu.classList.remove("active");
+                        body.style.overflow = "";
+                    });
+                });
+
+                // Mobile dropdown functionality
+                const mobileDropdownToggle = document.querySelector(".mobile-dropdown-toggle");
+                const mobileDropdownMenu = document.querySelector(".mobile-dropdown-menu");
+
+                if (mobileDropdownToggle && mobileDropdownMenu) {
+                    const mobileDropdownArrow = mobileDropdownToggle.querySelector(".dropdown-arrow");
+
+                    mobileDropdownToggle.addEventListener("click", () => {
+                        mobileDropdownMenu.classList.toggle("active");
+                        if (mobileDropdownArrow) {
+                            mobileDropdownArrow.style.transform = mobileDropdownMenu.classList.contains("active") 
+                                ? "rotate(180deg)" 
+                                : "rotate(0deg)";
+                        }
+                    });
+
+                    // Close mobile menu when clicking on dropdown links
+                    document.querySelectorAll(".mobile-dropdown-menu a").forEach((link) => {
+                        link.addEventListener("click", () => {
+                            hamburger.classList.remove("active");
+                            mobileMenu.classList.remove("active");
+                            body.style.overflow = "";
+                        });
+                    });
+                }
+            }
+
+            // Video functionality
+            console.log("Setting up video functionality...");
+            const isMobile = window.matchMedia("(max-width: 768px)").matches;
+            const isTouchDevice = "ontouchstart" in window;
+            
+            console.log("Device info:", { isMobile, isTouchDevice });
+
+            // Исправленная функциональность видео
+            document.querySelectorAll(".project-card").forEach((card, index) => {
+                const video = card.querySelector(".project-video");
+
+                if (!video) return;
+
+                console.log(`Setting up video ${index + 1}`);
+
+                // Принудительные атрибуты для мобильных
+                video.setAttribute("webkit-playsinline", "");
+                video.setAttribute("x-webkit-airplay", "allow");
+
+                // Обработчики событий видео
+                video.addEventListener("canplay", () => {
+                    console.log(`Video ${index + 1}: Can play`);
+
+                    // Принудительный запуск для мобильных
+                    if (isMobile || isTouchDevice) {
+                        video.play().then(() => {
+                            console.log(`Video ${index + 1}: Playing successfully on mobile`);
+                        }).catch((error) => {
+                            console.log(`Video ${index + 1}: Mobile autoplay blocked`, error);
                         });
                     }
                 });
 
-                card.addEventListener("mouseleave", () => {
-                    video.pause();
-                    video.currentTime = 0;
+                video.addEventListener("error", (e) => {
+                    console.error(`Video ${index + 1}: Error loading`, e);
                 });
-            }
 
-            // Запускаем загрузку
-            video.load();
-        });
+                // Логика воспроизведения
+                if (isMobile || isTouchDevice) {
+                    // Мобильные: автовоспроизведение
+                    video.load();
 
-        // Глобальная попытка включить автовоспроизведение при первом взаимодействии
-        const globalEnableAutoplay = () => {
-            document.querySelectorAll('.project-video').forEach((video, index) => {
-                if (video.paused) {
-                    video.play().then(() => {
-                        console.log(`Global enable: Video ${index + 1} started`);
-                    }).catch(e => {
-                        console.log(`Global enable: Video ${index + 1} failed:`, e);
+                    card.addEventListener("touchstart", () => {
+                        if (video.paused) {
+                            video.play().catch(e => console.log(`Touch play failed:`, e));
+                        }
+                    }, { passive: true });
+
+                    card.addEventListener("click", () => {
+                        if (video.paused) {
+                            video.play().catch(e => console.log(`Click play failed:`, e));
+                        }
+                    });
+
+                } else {
+                    // Десктоп: воспроизведение только при hover
+                    card.addEventListener("mouseenter", () => {
+                        if (video.readyState >= 2) {
+                            video.play().catch(e => console.log(`Hover play failed:`, e));
+                        }
+                    });
+
+                    card.addEventListener("mouseleave", () => {
+                        video.pause();
+                        video.currentTime = 0;
                     });
                 }
             });
-        };
 
-        // Добавляем обработчики для первого взаимодействия
-        document.addEventListener('touchstart', globalEnableAutoplay, { once: true, passive: true });
-        document.addEventListener('click', globalEnableAutoplay, { once: true });
+            // Глобальная активация видео при первом взаимодействии
+            const globalEnableAutoplay = () => {
+                console.log("Global autoplay activation");
+                document.querySelectorAll(".project-video").forEach((video, index) => {
+                    if (video.paused) {
+                        video.play().then(() => {
+                            console.log(`Global: Video ${index + 1} started`);
+                        }).catch(e => {
+                            console.log(`Global: Video ${index + 1} failed:`, e);
+                        });
+                    }
+                });
+            };
 
-        // Удаляем debug панель через 10 секунд
-        setTimeout(() => {
-            if (debugInfo) {
-                debugInfo.style.display = 'none';
-            }
-        }, 10000);
+            document.addEventListener("touchstart", globalEnableAutoplay, { once: true, passive: true });
+            document.addEventListener("click", globalEnableAutoplay, { once: true });
 
-      // Smooth scrolling for navigation links
-      document.querySelectorAll(".nav-links a").forEach((link) => {
-        link.addEventListener("click", (e) => {
-          // Remove active class from all links
-          document
-            .querySelectorAll(".nav-links a")
-            .forEach((l) => l.classList.remove("active"));
-          // Add active class to clicked link
-          e.target.classList.add("active");
-        });
-      });
-
-      class StatsCounter {
-        constructor() {
-          this.counters = document.querySelectorAll(".stat-item");
-          this.hasAnimated = false;
-          this.init();
-        }
-
-        init() {
-          this.createObserver();
-        }
-
-        createObserver() {
-          const options = {
-            threshold: 0.3,
-            rootMargin: "0px 0px -50px 0px",
-          };
-
-          const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting && !this.hasAnimated) {
-                this.animateCounters();
-                this.hasAnimated = true;
-              }
+            // Smooth scrolling for navigation links
+            document.querySelectorAll(".nav-links a").forEach((link) => {
+                link.addEventListener("click", (e) => {
+                    document.querySelectorAll(".nav-links a").forEach((l) => l.classList.remove("active"));
+                    e.target.classList.add("active");
+                });
             });
-          }, options);
 
-          const statsGrid = document.querySelector(".stats-grid");
-          if (statsGrid) {
-            observer.observe(statsGrid);
-          }
-        }
+            // Button handlers
+            document.querySelectorAll(".btn-primary").forEach((btn) => {
+                btn.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    alert("Registration will open here!");
+                });
+            });
 
-        animateCounters() {
-          this.counters.forEach((counter, index) => {
-            setTimeout(() => {
-              counter.classList.add("animate");
-              this.countUp(counter);
-            }, index * 200);
-          });
-        }
+            document.querySelectorAll(".btn-secondary").forEach((btn) => {
+                btn.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    alert("Event details page will open here!");
+                });
+            });
 
-        countUp(counter) {
-          const target = parseInt(counter.dataset.target);
-          const numberElement = counter.querySelector(".stat-number");
-          const duration = 2000; // 2 seconds
-          const increment = target / (duration / 16); // 60fps
-          let current = 0;
-
-          const timer = setInterval(() => {
-            current += increment;
-
-            if (current >= target) {
-              current = target;
-              clearInterval(timer);
-            }
-
-            // Format number with + for large numbers
-            let displayValue = Math.floor(current);
-            if (target >= 1000) {
-              displayValue = this.formatNumber(Math.floor(current)) + "+";
-            }
-
-            numberElement.textContent = displayValue;
-
-            // Add pulse effect during counting
-            if (current < target) {
-              numberElement.classList.add("counting");
-              setTimeout(() => {
-                numberElement.classList.remove("counting");
-              }, 100);
-            }
-          }, 16);
-        }
-
-        formatNumber(num) {
-          if (num >= 1000) {
-            return (num / 1000).toFixed(0) + "K";
-          }
-          return num.toString();
-        }
-      }
-      class CountdownTimer {
-        constructor() {
-          this.timers = document.querySelectorAll(".countdown-timer");
-          this.init();
-        }
-
-        init() {
-          this.timers.forEach((timer) => {
-            const targetDate = new Date(timer.dataset.target).getTime();
-            this.updateTimer(timer, targetDate);
-
-            setInterval(() => {
-              this.updateTimer(timer, targetDate);
-            }, 1000);
-          });
-        }
-
-        updateTimer(timer, targetDate) {
-          const now = new Date().getTime();
-          const distance = targetDate - now;
-
-          if (distance < 0) {
-            timer.innerHTML =
-              '<div style="color: #ef4444; font-weight: 600; font-size: 0.9rem;">Registration Closed</div>';
-            return;
-          }
-
-          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-          const hours = Math.floor(
-            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-          );
-          const minutes = Math.floor(
-            (distance % (1000 * 60 * 60)) / (1000 * 60)
-          );
-
-          const daysElement = timer.querySelector(".days");
-          const hoursElement = timer.querySelector(".hours");
-          const minutesElement = timer.querySelector(".minutes");
-
-          if (daysElement)
-            daysElement.textContent = String(days).padStart(2, "0");
-          if (hoursElement)
-            hoursElement.textContent = String(hours).padStart(2, "0");
-          if (minutesElement)
-            minutesElement.textContent = String(minutes).padStart(2, "0");
-        }
-      }
-
-      document.addEventListener("DOMContentLoaded", () => {
-        new CountdownTimer();
-
-        document.querySelectorAll(".btn-primary").forEach((btn) => {
-          btn.addEventListener("click", (e) => {
-            e.preventDefault();
-            alert("Ticket purchase will open here!");
-          });
+            console.log("All functionality initialized!");
         });
-
-        document.querySelectorAll(".btn-secondary").forEach((btn) => {
-          btn.addEventListener("click", (e) => {
-            e.preventDefault();
-            alert("Event details page will open here!");
-          });
-        });
-      });
-
-      // В вашем DOMContentLoaded обработчике добавьте:
-      // document.addEventListener("DOMContentLoaded", () => {
-      //     new Carousel();
-      //     new EventsManager();
-      //     new StatsCounter(); // Добавьте эту строку
-      // });
     </script>
   </body>
 </html>
