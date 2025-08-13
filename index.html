@@ -117,6 +117,7 @@
                 loop
                 playsinline
                 preload="auto"
+                autoplay
               >
                 <source src="media/es2.mp4" type="video/mp4" />
                 <!-- Placeholder for actual video -->
@@ -147,6 +148,7 @@
                 loop
                 playsinline
                 preload="auto"
+                autoplay
               >
                 <source src="media/wodLV.mp4" type="video/mp4" />
                 <!-- Placeholder for actual video -->
@@ -173,6 +175,7 @@
                 loop
                 playsinline
                 preload="auto"
+                autoplay
               >
                 <source src="media/turkey.mp4" type="video/mp4" />
                 <!-- Placeholder for actual video -->
@@ -254,7 +257,6 @@
                   <i class="fas fa-clock"></i>
                   <span>Sunday, March 1st, 2026 • 9:00 AM</span>
                 </div>
-                
               </div>
 
               <div class="countdown-section">
@@ -374,7 +376,6 @@
                   <i class="fas fa-clock"></i>
                   <span>Saturday, May 2nd, 2026 • 9:00 AM</span>
                 </div>
-                
               </div>
 
               <div class="countdown-section">
@@ -472,7 +473,6 @@
             </div>
           </div>
 
-          
         </div>
       </div>
     </section>
@@ -603,50 +603,135 @@
         });
       });
 
-      // Project cards video functionality - воспроизведение только при hover
-      document.querySelectorAll(".project-card").forEach((card) => {
-        const video = card.querySelector(".project-video");
+       // Debug информация
+        const debugInfo = document.getElementById('debugInfo');
+        const deviceType = document.getElementById('deviceType');
+        const touchSupport = document.getElementById('touchSupport');
+        const videosLoaded = document.getElementById('videosLoaded');
 
-        // Проверяем что это не мобильное устройство
         const isMobile = window.matchMedia("(max-width: 768px)").matches;
+        const isTouchDevice = 'ontouchstart' in window;
 
-        if (!isMobile) {
-          // Для десктопа - воспроизведение только при наведении
-          card.addEventListener("mouseenter", () => {
-            if (video && video.readyState >= 2) {
-              video.play().catch((e) => {
-                console.log("Video play failed:", e);
-              });
-            }
-          });
+        deviceType.textContent = isMobile ? 'Mobile' : 'Desktop';
+        touchSupport.textContent = isTouchDevice ? 'Yes' : 'No';
 
-          card.addEventListener("mouseleave", () => {
-            if (video) {
-              video.pause();
-              video.currentTime = 0; // Сбрасываем к началу
-            }
-          });
-        } else {
-          // Для мобильных устройств - автовоспроизведение
-          if (video && video.readyState >= 2) {
-            video.play().catch((e) => {
-              console.log("Mobile video autoplay failed:", e);
+        let loadedCount = 0;
+
+        // Исправленная функциональность видео
+        document.querySelectorAll(".project-card").forEach((card, index) => {
+            const video = card.querySelector(".project-video");
+
+            if (!video) return;
+
+            // Принудительные атрибуты для мобильных
+            video.setAttribute('webkit-playsinline', '');
+            video.setAttribute('x-webkit-airplay', 'allow');
+            
+            // Обработчики событий видео
+            video.addEventListener('loadstart', () => {
+                console.log(`Video ${index + 1}: Started loading`);
             });
-          }
 
-          // Если видео еще не загружено, запускаем когда будет готово
-          video.addEventListener("canplay", () => {
-            video.play().catch((e) => {
-              console.log("Mobile video autoplay failed:", e);
+            video.addEventListener('canplay', () => {
+                console.log(`Video ${index + 1}: Can play`);
+                loadedCount++;
+                videosLoaded.textContent = loadedCount;
+                
+                // Принудительный запуск для мобильных
+                if (isMobile || isTouchDevice) {
+                    video.play().then(() => {
+                        console.log(`Video ${index + 1}: Playing successfully on mobile`);
+                    }).catch((error) => {
+                        console.log(`Video ${index + 1}: Mobile autoplay blocked, trying manual start...`, error);
+                        
+                        // Если автовоспроизведение заблокировано, попробуем при первом взаимодействии
+                        const enableAutoplay = () => {
+                            video.play().then(() => {
+                                console.log(`Video ${index + 1}: Started after user interaction`);
+                            }).catch(e => console.log(`Video ${index + 1}: Still failed:`, e));
+                            
+                            // Удаляем обработчик после первого использования
+                            document.removeEventListener('touchstart', enableAutoplay);
+                            document.removeEventListener('click', enableAutoplay);
+                        };
+                        
+                        document.addEventListener('touchstart', enableAutoplay, { once: true });
+                        document.addEventListener('click', enableAutoplay, { once: true });
+                    });
+                }
             });
-          });
-        }
 
-        // Обработка ошибок загрузки
-        video.addEventListener("error", (e) => {
-          console.warn(`Video failed to load: ${video.src}`, e);
+            video.addEventListener('playing', () => {
+                console.log(`Video ${index + 1}: Actually playing now`);
+            });
+
+            video.addEventListener('error', (e) => {
+                console.error(`Video ${index + 1}: Error loading`, e);
+            });
+
+            // Логика воспроизведения
+            if (isMobile || isTouchDevice) {
+                // Мобильные: пытаемся воспроизвести сразу при загрузке
+                video.load();
+                
+                // Дополнительная попытка при взаимодействии с карточкой
+                card.addEventListener('touchstart', () => {
+                    if (video.paused) {
+                        video.play().catch(e => console.log(`Touch play failed for video ${index + 1}:`, e));
+                    }
+                }, { passive: true });
+
+                card.addEventListener('click', () => {
+                    if (video.paused) {
+                        video.play().catch(e => console.log(`Click play failed for video ${index + 1}:`, e));
+                    }
+                });
+
+            } else {
+                // Десктоп: воспроизведение только при hover
+                video.pause(); // Останавливаем автовоспроизведение на десктопе
+                
+                card.addEventListener("mouseenter", () => {
+                    if (video.readyState >= 2) {
+                        video.play().catch((e) => {
+                            console.log(`Desktop hover play failed for video ${index + 1}:`, e);
+                        });
+                    }
+                });
+
+                card.addEventListener("mouseleave", () => {
+                    video.pause();
+                    video.currentTime = 0;
+                });
+            }
+
+            // Запускаем загрузку
+            video.load();
         });
-      });
+
+        // Глобальная попытка включить автовоспроизведение при первом взаимодействии
+        const globalEnableAutoplay = () => {
+            document.querySelectorAll('.project-video').forEach((video, index) => {
+                if (video.paused) {
+                    video.play().then(() => {
+                        console.log(`Global enable: Video ${index + 1} started`);
+                    }).catch(e => {
+                        console.log(`Global enable: Video ${index + 1} failed:`, e);
+                    });
+                }
+            });
+        };
+
+        // Добавляем обработчики для первого взаимодействия
+        document.addEventListener('touchstart', globalEnableAutoplay, { once: true, passive: true });
+        document.addEventListener('click', globalEnableAutoplay, { once: true });
+
+        // Удаляем debug панель через 10 секунд
+        setTimeout(() => {
+            if (debugInfo) {
+                debugInfo.style.display = 'none';
+            }
+        }, 10000);
 
       // Smooth scrolling for navigation links
       document.querySelectorAll(".nav-links a").forEach((link) => {
@@ -742,62 +827,70 @@
         }
       }
       class CountdownTimer {
-            constructor() {
-                this.timers = document.querySelectorAll('.countdown-timer');
-                this.init();
-            }
-
-            init() {
-                this.timers.forEach(timer => {
-                    const targetDate = new Date(timer.dataset.target).getTime();
-                    this.updateTimer(timer, targetDate);
-                    
-                    setInterval(() => {
-                        this.updateTimer(timer, targetDate);
-                    }, 1000);
-                });
-            }
-
-            updateTimer(timer, targetDate) {
-                const now = new Date().getTime();
-                const distance = targetDate - now;
-
-                if (distance < 0) {
-                    timer.innerHTML = '<div style="color: #ef4444; font-weight: 600; font-size: 0.9rem;">Registration Closed</div>';
-                    return;
-                }
-
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-
-                const daysElement = timer.querySelector('.days');
-                const hoursElement = timer.querySelector('.hours');
-                const minutesElement = timer.querySelector('.minutes');
-
-                if (daysElement) daysElement.textContent = String(days).padStart(2, '0');
-                if (hoursElement) hoursElement.textContent = String(hours).padStart(2, '0');
-                if (minutesElement) minutesElement.textContent = String(minutes).padStart(2, '0');
-            }
+        constructor() {
+          this.timers = document.querySelectorAll(".countdown-timer");
+          this.init();
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            new CountdownTimer();
+        init() {
+          this.timers.forEach((timer) => {
+            const targetDate = new Date(timer.dataset.target).getTime();
+            this.updateTimer(timer, targetDate);
 
-            document.querySelectorAll('.btn-primary').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    alert('Ticket purchase will open here!');
-                });
-            });
+            setInterval(() => {
+              this.updateTimer(timer, targetDate);
+            }, 1000);
+          });
+        }
 
-            document.querySelectorAll('.btn-secondary').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    alert('Event details page will open here!');
-                });
-            });
+        updateTimer(timer, targetDate) {
+          const now = new Date().getTime();
+          const distance = targetDate - now;
+
+          if (distance < 0) {
+            timer.innerHTML =
+              '<div style="color: #ef4444; font-weight: 600; font-size: 0.9rem;">Registration Closed</div>';
+            return;
+          }
+
+          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          const hours = Math.floor(
+            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          );
+          const minutes = Math.floor(
+            (distance % (1000 * 60 * 60)) / (1000 * 60)
+          );
+
+          const daysElement = timer.querySelector(".days");
+          const hoursElement = timer.querySelector(".hours");
+          const minutesElement = timer.querySelector(".minutes");
+
+          if (daysElement)
+            daysElement.textContent = String(days).padStart(2, "0");
+          if (hoursElement)
+            hoursElement.textContent = String(hours).padStart(2, "0");
+          if (minutesElement)
+            minutesElement.textContent = String(minutes).padStart(2, "0");
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        new CountdownTimer();
+
+        document.querySelectorAll(".btn-primary").forEach((btn) => {
+          btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            alert("Ticket purchase will open here!");
+          });
         });
+
+        document.querySelectorAll(".btn-secondary").forEach((btn) => {
+          btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            alert("Event details page will open here!");
+          });
+        });
+      });
 
       // В вашем DOMContentLoaded обработчике добавьте:
       // document.addEventListener("DOMContentLoaded", () => {
