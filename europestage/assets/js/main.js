@@ -1,354 +1,189 @@
-/* ---- swiper ---- */
+// Mobile Menu Toggle
+const navbarToggle = document.getElementById("navbar-toggle");
+const mobileMenu = document.getElementById("mobile-menu");
+const navbar = document.getElementById("navbar");
 
-const swiper = new Swiper(".slider-wrapper", {
-  loop: true,
-  grabCursor: true,
-  spaceBetween: 20,
-  centeredSlides: true,
-  initialSlide: 2,
-  on: {
-    click(event) {
-      swiper.slideTo(this.clickedIndex);
-    },
-  },
-  // Navigation arrows
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
- 
-  // Responsive breakpoints
-  breakpoints: {
-    0: {
-      slidesPerView: 1,
-    },
-    768: {
-      slidesPerView: 2,
-    },
-    1024: {
-      slidesPerView: 3,
-    },
-  },
+navbarToggle.addEventListener("click", function () {
+  this.classList.toggle("active");
+  mobileMenu.classList.toggle("active");
+  document.body.style.overflow = mobileMenu.classList.contains("active")
+    ? "hidden"
+    : "";
 });
 
-/* ---- particles ---- */
+// Mobile dropdown functionality
+const mobileDropdown = document.querySelector(".mobile-dropdown");
+const mobileDropdownToggle = document.querySelector(".mobile-dropdown-toggle");
 
-particlesJS(
-  "particles-js",
+if (mobileDropdownToggle) {
+  mobileDropdownToggle.addEventListener("click", (e) => {
+    if (window.innerWidth <= 991) {
+      e.preventDefault();
+      mobileDropdown.classList.toggle("active");
+    }
+  });
+}
 
+// Close mobile menu when clicking on regular links
+document
+  .querySelectorAll(".mobile-menu-links a:not(.mobile-dropdown-toggle)")
+  .forEach((link) => {
+    link.addEventListener("click", () => {
+      navbarToggle.classList.remove("active");
+      mobileMenu.classList.remove("active");
+      mobileDropdown.classList.remove("active");
+      document.body.style.overflow = "";
+    });
+  });
+
+// Close mobile menu when clicking dropdown items
+document.querySelectorAll(".dropdown-item").forEach((item) => {
+  item.addEventListener("click", () => {
+    navbarToggle.classList.remove("active");
+    mobileMenu.classList.remove("active");
+    mobileDropdown.classList.remove("active");
+    document.body.style.overflow = "";
+  });
+});
+
+// Navbar scroll effect
+let lastScrollY = window.scrollY;
+
+window.addEventListener(
+  "scroll",
+  () => {
+    if (window.scrollY > 50) {
+      navbar.classList.add("scrolled");
+    } else {
+      navbar.classList.remove("scrolled");
+    }
+    lastScrollY = window.scrollY;
+  },
+  { passive: true }
+);
+
+// Close mobile menu when clicking outside
+document.addEventListener("click", (e) => {
+  if (
+    mobileMenu.classList.contains("active") &&
+    !mobileMenu.contains(e.target) &&
+    !navbarToggle.contains(e.target)
+  ) {
+    navbarToggle.classList.remove("active");
+    mobileMenu.classList.remove("active");
+    mobileDropdown.classList.remove("active");
+    document.body.style.overflow = "";
+  }
+});
+
+// Handle window resize
+window.addEventListener("resize", () => {
+  if (window.innerWidth >= 992) {
+    navbarToggle.classList.remove("active");
+    mobileMenu.classList.remove("active");
+    mobileDropdown.classList.remove("active");
+    document.body.style.overflow = "";
+  }
+});
+
+// Keyboard navigation support
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && mobileMenu.classList.contains("active")) {
+    navbarToggle.classList.remove("active");
+    mobileMenu.classList.remove("active");
+    mobileDropdown.classList.remove("active");
+    document.body.style.overflow = "";
+  }
+});
+
+// Countdown Timer Function
+function updateCountdown(targetDate, prefix) {
+  const now = new Date().getTime();
+  const target = new Date(targetDate).getTime();
+  const timeLeft = target - now;
+
+  if (timeLeft > 0) {
+    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(
+      (timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+    document.getElementById(`${prefix}-days`).textContent = String(
+      days
+    ).padStart(2, "0");
+    document.getElementById(`${prefix}-hours`).textContent = String(
+      hours
+    ).padStart(2, "0");
+    document.getElementById(`${prefix}-minutes`).textContent = String(
+      minutes
+    ).padStart(2, "0");
+    document.getElementById(`${prefix}-seconds`).textContent = String(
+      seconds
+    ).padStart(2, "0");
+  } else {
+    document.getElementById(`${prefix}-days`).textContent = "00";
+    document.getElementById(`${prefix}-hours`).textContent = "00";
+    document.getElementById(`${prefix}-minutes`).textContent = "00";
+    document.getElementById(`${prefix}-seconds`).textContent = "00";
+  }
+}
+
+// Set countdown target dates (adjust these dates as needed)
+const rigaDeadline = "2026-02-01T23:59:59";
+const turkeyDeadline = "2026-03-01T23:59:59";
+
+// Update countdowns every second
+setInterval(() => {
+  updateCountdown(rigaDeadline, "riga");
+  updateCountdown(turkeyDeadline, "turkey");
+}, 1000);
+
+// Initialize countdowns immediately
+updateCountdown(rigaDeadline, "riga");
+updateCountdown(turkeyDeadline, "turkey");
+
+// Simulate dynamic spots update (you would replace this with real data)
+function updateSpots() {
+  // Simulate random spot decreases (replace with actual API calls)
+  const rigaSpots = document.getElementById("riga-spots");
+  const turkeySpots = document.getElementById("turkey-spots");
+
+  // You can update these values from your backend/API
+  // rigaSpots.textContent = newRigaSpotCount;
+  // turkeySpots.textContent = newTurkeySpotCount;
+}
+
+// Auto-play videos when they come into view (optional)
+const videos = document.querySelectorAll(".event-video");
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.play();
+      } else {
+        entry.target.pause();
+      }
+    });
+  },
   {
-    particles: {
-      number: {
-        value: 150,
-        density: {
-          enable: true,
-          value_area: 900,
-        },
-      },
-      color: {
-        value: "#ffffff",
-      },
-      shape: {
-        type: "circle",
-        stroke: {
-          width: 0,
-          color: "#000000",
-        },
-        polygon: {
-          nb_sides: 5,
-        },
-        image: {
-          src: "img/github.svg",
-          width: 100,
-          height: 100,
-        },
-      },
-      opacity: {
-        value: 0.2,
-        random: false,
-        anim: {
-          enable: false,
-          speed: 1,
-          opacity_min: 0.1,
-          sync: false,
-        },
-      },
-      size: {
-        value: 5,
-        random: true,
-        anim: {
-          enable: false,
-          speed: 40,
-          size_min: 0.1,
-          sync: false,
-        },
-      },
-      line_linked: {
-        enable: true,
-        distance: 150,
-        color: "#ffffff",
-        opacity: 0.2,
-        width: 2,
-      },
-      move: {
-        enable: true,
-        speed: 2,
-        direction: "none",
-        random: false,
-        straight: false,
-        out_mode: "out",
-        attract: {
-          enable: false,
-          rotateX: 600,
-          rotateY: 1200,
-        },
-      },
-    },
-    interactivity: {
-      detect_on: "canvas",
-      events: {
-        onhover: {
-          enable: true,
-          mode: "repulse",
-        },
-        onclick: {
-          enable: true,
-          mode: "push",
-        },
-        resize: true,
-      },
-      modes: {
-        grab: {
-          distance: 400,
-          line_linked: {
-            opacity: 1,
-          },
-        },
-        bubble: {
-          distance: 400,
-          size: 40,
-          duration: 2,
-          opacity: 8,
-          speed: 3,
-        },
-        repulse: {
-          distance: 200,
-        },
-        push: {
-          particles_nb: 4,
-        },
-        remove: {
-          particles_nb: 2,
-        },
-      },
-    },
-    retina_detect: true,
+    threshold: 0.5,
   }
 );
 
-// Mobile Menu Toggle
-      const navbarToggle = document.getElementById('navbar-toggle');
-      const mobileMenu = document.getElementById('mobile-menu');
-      const navbar = document.getElementById('navbar');
-      
-      navbarToggle.addEventListener('click', function() {
-        this.classList.toggle('active');
-        mobileMenu.classList.toggle('active');
-        document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-      });
-      
-      // Close mobile menu when clicking on links
-      document.querySelectorAll('.mobile-menu-links a').forEach(link => {
-        link.addEventListener('click', () => {
-          navbarToggle.classList.remove('active');
-          mobileMenu.classList.remove('active');
-          document.body.style.overflow = '';
-        });
-      });
-      
-      // Navbar scroll effect
-      let lastScrollY = window.scrollY;
-      
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-          navbar.classList.add('scrolled');
-        } else {
-          navbar.classList.remove('scrolled');
-        }
-        lastScrollY = window.scrollY;
-      }, { passive: true });
-      
-      // Smooth scrolling for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute('href'));
-          if (target) {
-            const navbarHeight = navbar.offsetHeight;
-            const targetPosition = target.offsetTop - navbarHeight - 20;
-            
-            window.scrollTo({
-              top: targetPosition,
-              behavior: 'smooth'
-            });
-            
-            // Close mobile menu if open
-            if (mobileMenu.classList.contains('active')) {
-              navbarToggle.classList.remove('active');
-              mobileMenu.classList.remove('active');
-              document.body.style.overflow = '';
-            }
-          }
-        });
-      });
-      
-      // Close mobile menu when clicking outside
-      document.addEventListener('click', (e) => {
-        if (mobileMenu.classList.contains('active') && 
-            !mobileMenu.contains(e.target) && 
-            !navbarToggle.contains(e.target)) {
-          navbarToggle.classList.remove('active');
-          mobileMenu.classList.remove('active');
-          document.body.style.overflow = '';
-        }
-      });
-      
-      // Handle window resize
-      window.addEventListener('resize', () => {
-        if (window.innerWidth >= 992) {
-          // Close mobile menu on desktop
-          navbarToggle.classList.remove('active');
-          mobileMenu.classList.remove('active');
-          document.body.style.overflow = '';
-        }
-      });
-      
-      // Prevent scroll when mobile menu is open
-      mobileMenu.addEventListener('touchmove', (e) => {
-        e.preventDefault();
-      }, { passive: false });
-      
-      // Enhanced touch interactions for mobile
-      if ('ontouchstart' in window) {
-        // Add touch feedback for interactive elements
-        const touchElements = document.querySelectorAll('.navbar-icon, .hero-social-icon, .hero-btn, .mobile-menu-icon');
-        
-        touchElements.forEach(element => {
-          element.addEventListener('touchstart', function() {
-            this.style.transform = 'scale(0.95)';
-          }, { passive: true });
-          
-          element.addEventListener('touchend', function() {
-            setTimeout(() => {
-              this.style.transform = '';
-            }, 150);
-          }, { passive: true });
-        });
-      }
-      
-      // Performance optimization for animations
-      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-      
-      if (prefersReducedMotion.matches) {
-        // Disable animations for users who prefer reduced motion
-        document.documentElement.style.setProperty('--transition', 'none');
-      }
-      
-      // Lazy load optimization for better performance
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-      };
-      
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-          }
-        });
-      }, observerOptions);
-      
-      // Initialize intersection observer for fade-in animations
-      document.addEventListener('DOMContentLoaded', () => {
-        const animatedElements = document.querySelectorAll('.hero-content > *');
-        animatedElements.forEach((el, index) => {
-          if (index > 0) { // Skip first element as it has CSS animation
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
-            observer.observe(el);
-          }
-        });
-      });
-      
-      // Keyboard navigation support
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
-          navbarToggle.classList.remove('active');
-          mobileMenu.classList.remove('active');
-          document.body.style.overflow = '';
-        }
-      });
-      
-      // Focus management for accessibility
-      navbarToggle.addEventListener('click', () => {
-        if (mobileMenu.classList.contains('active')) {
-          // Focus first menu item when menu opens
-          const firstMenuItem = mobileMenu.querySelector('.mobile-menu-links a');
-          if (firstMenuItem) {
-            setTimeout(() => firstMenuItem.focus(), 100);
-          }
-        }
-      });
-      
-      // Trap focus within mobile menu when open
-      const focusableElements = 'a, button, [tabindex]:not([tabindex="-1"])';
-      
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Tab' && mobileMenu.classList.contains('active')) {
-          const focusableContent = mobileMenu.querySelectorAll(focusableElements);
-          const firstFocusable = focusableContent[0];
-          const lastFocusable = focusableContent[focusableContent.length - 1];
-          
-          if (e.shiftKey) {
-            if (document.activeElement === firstFocusable) {
-              lastFocusable.focus();
-              e.preventDefault();
-            }
-          } else {
-            if (document.activeElement === lastFocusable) {
-              firstFocusable.focus();
-              e.preventDefault();
-            }
-          }
-        }
-      });
-      
-      // Update navbar height CSS variable dynamically
-      function updateNavbarHeight() {
-        const navbarHeight = navbar.offsetHeight;
-        document.documentElement.style.setProperty('--navbar-height', `${navbarHeight}px`);
-      }
-      
-      // Update on load and resize
-      updateNavbarHeight();
-      window.addEventListener('resize', updateNavbarHeight);
-      
-      // Safari iOS viewport height fix
-      function setViewportHeight() {
-        const vh = window.innerHeight * 0.01;
-        document.documentElement.style.setProperty('--vh', `${vh}px`);
-      }
-      
-      setViewportHeight();
-      window.addEventListener('resize', setViewportHeight);
-      window.addEventListener('orientationchange', setViewportHeight);
-      
-      // Progressive Web App support
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          // Service worker registration would go here
-          console.log('PWA support available');
-        });
-      }
+videos.forEach((video) => {
+  observer.observe(video);
+});
+
+// Handle video fallback if video fails to load
+videos.forEach((video) => {
+  video.addEventListener("error", function () {
+    // Show fallback image if video fails
+    const img = this.nextElementSibling;
+    if (img && img.tagName === "IMG") {
+      img.style.display = "block";
+      this.style.display = "none";
+    }
+  });
+});
