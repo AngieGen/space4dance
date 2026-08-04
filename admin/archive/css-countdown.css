@@ -1,0 +1,27 @@
+/* (A) OUTER WRAPPER & SLIDES - SAME DIMENSIONS */
+.cwrap, .cslide { width: 100px; height: 60px; }
+.cwrap 
+{ 
+overflow: hidden;
+
+}
+
+/* (B) SLIDE ANIMATION */
+.cmove { position: relative; bottom: 0; }
+@keyframes countdown {
+  0% { bottom: 0; } 32% { bottom: 0; }
+  33% { bottom: 100%; } 65% { bottom: 100%; }
+  66% { bottom: 200%; } 99% { bottom: 200%; }
+  100% { bottom: 300%; }
+}
+
+/* (C) ATTACH KEYFRAMES TO INNER WRAPPER */
+.cmove { animation: 3s linear countdown forwards; }
+
+/* (X) COSMETICS */
+.cslide {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 3em; color: #fff; background: #A8E6FD;
+  display: flex; align-items: center; justify-content: center;
+}
+* { box-sizing: border-box; }

@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\safli\\Dropbox (Personal)\\space4dance.org\\myaccount\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\safli\\Dropbox (Personal)\\space4dance.org\\myaccount\\acts\\acts_all_wod_results.asp||{C76D83F8-A489-11D0-8195-00A0C91BBEE3}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:acts\\acts_all_wod_results.asp||{C76D83F8-A489-11D0-8195-00A0C91BBEE3}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\safli\\Dropbox (Personal)\\space4dance.org\\myaccount\\studios\\default.asp||{C76D83F8-A489-11D0-8195-00A0C91BBEE3}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:studios\\default.asp||{C76D83F8-A489-11D0-8195-00A0C91BBEE3}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "acts_all_wod_results.asp",
+              "DocumentMoniker": "C:\\Users\\safli\\Dropbox (Personal)\\space4dance.org\\myaccount\\acts\\acts_all_wod_results.asp",
+              "RelativeDocumentMoniker": "acts\\acts_all_wod_results.asp",
+              "ToolTip": "C:\\Users\\safli\\Dropbox (Personal)\\space4dance.org\\myaccount\\acts\\acts_all_wod_results.asp",
+              "RelativeToolTip": "acts\\acts_all_wod_results.asp",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAARGSURBVDhPbZJba1xVGIafvffsyZz3TGbSJtM0SUuSpq2G1paIiOABEYtQBcULafUXWBFE7A\u002Bw1AuhHkDBm4qISCkolgoVEU\u002B0kbQ2TVJybE4zmWMmM7NnMoe91vIisU3TvvBdLBbr4X3fb2ls0TMvHD9x6vSZ8yhQSqGkQqGQSqAEoBRSSaRUKCRKKg72tp/6\u002Bcfvz3/w/nsllFKurUAAX4vJof4ODF1D/Q8GpFJIBVIohIJaQ3B9dIpvLlx\u002B1/KGIp98\u002Bvm5tzVN07cDDUPHCnoIh7xEQl4iId/dCYd8hEN\u002BwiE/VtCLkA472mLdyvC8vtZwvXPm7Eeh\u002B4AKhVIKFBuzTRqgbV5qgBACQ9dZWsnuHx6deatn3\u002BE373e4GfHuUSmawsGuVchVV0mVC2TKNkW7RsNx8Ho8TM8tsbicploT3R9/\u002Bd25\u002BzvcBnQkpItFbiQnuGHfIp12E6jE6Q90MtjXytFDBwhGdrCSs0mn01y88C3bIkuklABUag1GFie5kviVpchVHuvr5KWhvUT7S/zRuMrF4VnmV/K0x0J0xWMYLhOl1DagUkgpUUqRKlS5lbnFmP0XZXcSfE0c00dVdpJy2hhRC/ydHKPsVGhxm4jNYA8ChUQpmEqUuL20TCI7T66QZ7I0x8i8ZD4RpyKiJNumuLZ2k1Q1j1IaUmkPAUpFs9mkWCpz/XaG2TGdwmSAmck015OT3JzRWEg1sJnG9oxxp7lASVQQUkPIhwGBXL7AF1\u002BdZ\u002BTPK1SLreA8T3k6TjFfoexkcOo1tIyFkbCwV2vUag5CcdehC\u002BDD0yfPxndGe8tOsCu1OE42McNT8Tx5o8a000/W9Tj1wiXq6\u002BM41TBGpRtfZT87fXWC\u002BHAkOFsdHt2rP/3iUPCVowP\u002BIx69jqhl6I/c4dHQTTrkNKpk0kyZiILEKTvIoo4v28ZB/wBhM4yQIP7v8Nmhruc8temgZk8QMktErSCyaWPILO3ucQY81\u002BiRU6hECJGx0KsNgkaBnkCYwV37CHvDOJJ7Hf702cu/HB6MD7R4TDQUOk2Qglp5naC2whPxfznZP4xV8GMUBDGjwOGeJsee7OWRvj34/QEccW8prt9\u002BuMTgkT34LDe\u002B5gR73HOonjxB06FRhardJNsQvHH8NepalJYWD9FwECsUwDQMpAJHgBAbi9XDvcdwtVg4jSaGKNDhW\u002BbA7iqxmIk7EGat2srImM6d8QmifpO9u9uJtlqYpolER0qQCoTc\u002BDBGR9e\u002BWKCx1F0t1QJSKPzeOmu5CpWiwF73sLBqMTzXSl3zENnVh\u002B5tpVgVFMoOq7ZgtSLIlQTZ/BqJ2X8wfh8evWxWsgfTGRrrdaPudzuRG6MNZucgkTVZKPmZrcQwfRHWdYtUoc5CMs/iyioLyVUWV/JkcmvYxSy55Qk2mtzUUGfLiVcHw1\u002BPFC2SZT9SulAuFxWXH5fPQvP40Qxz65MH9B81rkdOj6KdhwAAAABJRU5ErkJggg==",
+              "WhenOpened": "2026-05-24T12:02:27.226Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "default.asp",
+              "DocumentMoniker": "C:\\Users\\safli\\Dropbox (Personal)\\space4dance.org\\myaccount\\studios\\default.asp",
+              "RelativeDocumentMoniker": "studios\\default.asp",
+              "ToolTip": "C:\\Users\\safli\\Dropbox (Personal)\\space4dance.org\\myaccount\\studios\\default.asp",
+              "RelativeToolTip": "studios\\default.asp",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAARGSURBVDhPbZJba1xVGIafvffsyZz3TGbSJtM0SUuSpq2G1paIiOABEYtQBcULafUXWBFE7A\u002Bw1AuhHkDBm4qISCkolgoVEU\u002B0kbQ2TVJybE4zmWMmM7NnMoe91vIisU3TvvBdLBbr4X3fb2ls0TMvHD9x6vSZ8yhQSqGkQqGQSqAEoBRSSaRUKCRKKg72tp/6\u002Bcfvz3/w/nsllFKurUAAX4vJof4ODF1D/Q8GpFJIBVIohIJaQ3B9dIpvLlx\u002B1/KGIp98\u002Bvm5tzVN07cDDUPHCnoIh7xEQl4iId/dCYd8hEN\u002BwiE/VtCLkA472mLdyvC8vtZwvXPm7Eeh\u002B4AKhVIKFBuzTRqgbV5qgBACQ9dZWsnuHx6deatn3\u002BE373e4GfHuUSmawsGuVchVV0mVC2TKNkW7RsNx8Ho8TM8tsbicploT3R9/\u002Bd25\u002BzvcBnQkpItFbiQnuGHfIp12E6jE6Q90MtjXytFDBwhGdrCSs0mn01y88C3bIkuklABUag1GFie5kviVpchVHuvr5KWhvUT7S/zRuMrF4VnmV/K0x0J0xWMYLhOl1DagUkgpUUqRKlS5lbnFmP0XZXcSfE0c00dVdpJy2hhRC/ydHKPsVGhxm4jNYA8ChUQpmEqUuL20TCI7T66QZ7I0x8i8ZD4RpyKiJNumuLZ2k1Q1j1IaUmkPAUpFs9mkWCpz/XaG2TGdwmSAmck015OT3JzRWEg1sJnG9oxxp7lASVQQUkPIhwGBXL7AF1\u002BdZ\u002BTPK1SLreA8T3k6TjFfoexkcOo1tIyFkbCwV2vUag5CcdehC\u002BDD0yfPxndGe8tOsCu1OE42McNT8Tx5o8a000/W9Tj1wiXq6\u002BM41TBGpRtfZT87fXWC\u002BHAkOFsdHt2rP/3iUPCVowP\u002BIx69jqhl6I/c4dHQTTrkNKpk0kyZiILEKTvIoo4v28ZB/wBhM4yQIP7v8Nmhruc8temgZk8QMktErSCyaWPILO3ucQY81\u002BiRU6hECJGx0KsNgkaBnkCYwV37CHvDOJJ7Hf702cu/HB6MD7R4TDQUOk2Qglp5naC2whPxfznZP4xV8GMUBDGjwOGeJsee7OWRvj34/QEccW8prt9\u002BuMTgkT34LDe\u002B5gR73HOonjxB06FRhardJNsQvHH8NepalJYWD9FwECsUwDQMpAJHgBAbi9XDvcdwtVg4jSaGKNDhW\u002BbA7iqxmIk7EGat2srImM6d8QmifpO9u9uJtlqYpolER0qQCoTc\u002BDBGR9e\u002BWKCx1F0t1QJSKPzeOmu5CpWiwF73sLBqMTzXSl3zENnVh\u002B5tpVgVFMoOq7ZgtSLIlQTZ/BqJ2X8wfh8evWxWsgfTGRrrdaPudzuRG6MNZucgkTVZKPmZrcQwfRHWdYtUoc5CMs/iyioLyVUWV/JkcmvYxSy55Qk2mtzUUGfLiVcHw1\u002BPFC2SZT9SulAuFxWXH5fPQvP40Qxz65MH9B81rkdOj6KdhwAAAABJRU5ErkJggg==",
+              "WhenOpened": "2026-05-22T11:42:38.679Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

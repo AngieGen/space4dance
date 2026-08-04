@@ -1,0 +1,15 @@
+/* (A) OUTER WRAPPER & SLIDES - SAME DIMENSIONS */
+.cwrap, .cslide { width: 300px; height: 250px; }
+.cwrap { overflow: hidden; }
+ 
+/* (B) SLIDE ANIMATION */
+.cmove { position: relative; bottom: 0; }
+@keyframes countdown {
+  0% { bottom: 0; } 32% { bottom: 0; }
+  33% { bottom: 100%; } 65% { bottom: 100%; }
+  66% { bottom: 200%; } 99% { bottom: 200%; }
+  100% { bottom: 300%; }
+}
+ 
+/* (C) ATTACH KEYFRAMES TO INNER WRAPPER */
+.cmove { animation: 3s linear countdown forwards; }

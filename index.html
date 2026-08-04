@@ -1,0 +1,758 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Space4Dance — international dance competitions, Europestage and World of Dance Latvia."
+    />
+    <title>Space4Dance — Dance Competitions Platform</title>
+    <link rel="stylesheet" href="styles_v1.css" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="../myaccount/favicon.ico"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Montserrat:wght@600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/7c7471db46.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-EV5078LJQ1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-EV5078LJQ1");
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <nav class="navbar" id="navbar" aria-label="Main navigation">
+      <div class="nav-container">
+        <a href="#hero" class="logo" aria-label="Space4Dance home">
+          <img src="media/S4D-8.png" alt="Space4Dance" />
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#projects-section">Projects</a></li>
+          <li><a href="#events-section">Calendar</a></li>
+          <li><a href="#about-section">Team</a></li>
+          <li><a href="#partner-section">Partners</a></li>
+          <li><a href="#contacts-section">Contacts</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <a href="https://space4dance.org/myaccount/" class="nav-login">
+            <i class="fas fa-user" aria-hidden="true"></i> Log in
+          </a>
+          <a
+            href="https://space4dance.org/myaccount/tickets/buy_tickets.asp"
+            class="nav-tickets"
+          >
+            <i class="fas fa-ticket-alt" aria-hidden="true"></i> Buy tickets
+          </a>
+        </div>
+
+        <button
+          class="menu-toggle"
+          id="menu-toggle"
+          type="button"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+      <div class="mobile-menu-inner">
+        <a href="#projects-section">Projects</a>
+        <a href="#events-section">Calendar</a>
+        <a href="#about-section">Team</a>
+        <a href="#partner-section">Partners</a>
+        <a href="#contacts-section">Contacts</a>
+        <div class="mobile-actions">
+          <a
+            href="https://space4dance.org/myaccount/"
+            class="button button-ghost"
+          >
+            <i class="fas fa-user" aria-hidden="true"></i> Log in
+          </a>
+          <a
+            href="https://space4dance.org/myaccount/tickets/buy_tickets.asp"
+            class="button button-acid"
+          >
+            <i class="fas fa-ticket-alt" aria-hidden="true"></i> Buy tickets
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <main id="main">
+      <section id="hero" class="hero">
+        <img class="hero-image" src="media/392.jpg" alt="" />
+        <div class="hero-overlay"></div>
+        <div class="hero-noise" aria-hidden="true"></div>
+
+        <div class="hero-content">
+          <span class="hero-code" aria-hidden="true"
+            >S4D / LIVE / EUROPE / 2027</span
+          >
+          <div class="hero-kicker">
+            <span class="pulse"></span>
+            International dance events · Europe
+          </div>
+          <h1>
+            Where talent<br />
+            takes <em>the stage.</em>
+          </h1>
+          <p>
+            Space4Dance brings dancers, studios and audiences together through
+            unforgettable competitions — from Europestage to World of Dance.
+          </p>
+          <div class="hero-actions">
+            <a href="#events-section" class="button button-acid">
+              Explore calendar <span aria-hidden="true">↓</span>
+            </a>
+            <a href="#projects-section" class="button button-glass">
+              Meet our projects
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-side-label" aria-hidden="true">
+          MOVE&nbsp;&nbsp;•&nbsp;&nbsp;COMPETE&nbsp;&nbsp;•&nbsp;&nbsp;GROW
+        </div>
+
+        <div class="hero-stamp" aria-hidden="true">
+          <span>10+</span>
+          <small>years creating<br />dance moments</small>
+        </div>
+
+        <div class="hero-ticker" aria-hidden="true">
+          <div>
+            <span>EUROPESTAGE</span><b>✦</b> <span>WORLD OF DANCE LATVIA</span
+            ><b>✦</b> <span>RĪGA</span><b>✦</b> <span>TÜRKİYE</span><b>✦</b>
+            <span>EUROPESTAGE</span><b>✦</b> <span>WORLD OF DANCE LATVIA</span
+            ><b>✦</b>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects-section" class="section projects-section">
+        <div class="shell">
+          <header class="section-header split-header">
+            <div>
+              <span class="section-index">01 / Our projects</span>
+              <h2>Two worlds.<br /><em>One dance community.</em></h2>
+            </div>
+            <p>
+              Distinct formats, one ambition: to give dancers a professional
+              stage, international exposure and a reason to keep growing.
+            </p>
+          </header>
+
+          <div class="project-grid">
+            <article class="project-card project-europestage">
+              <div class="project-media">
+                <video
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  autoplay
+                  poster="media/397.jpg"
+                >
+                  <source src="media/es2.mp4" type="video/mp4" />
+                </video>
+                <div class="project-shade"></div>
+                <span class="project-number">PROJECT / 01</span>
+              </div>
+              <div class="project-body" data-label="01">
+                <div class="project-brand">
+                  <img src="media/logo_es_white.svg" alt="Europestage" />
+                </div>
+                <p>
+                  A vibrant international dance contest where competition meets
+                  travel, celebration and connection across Europe.
+                </p>
+                <div class="project-upcoming">
+                  <span class="project-upcoming-label">Upcoming events</span>
+                  <div class="project-date-grid">
+                    <div class="project-date-card">
+                      <time datetime="2027-02-27">
+                        <strong>27–28</strong>
+                        <small>FEB · 2027</small>
+                      </time>
+                      <span
+                        ><i
+                          class="fas fa-map-marker-alt"
+                          aria-hidden="true"
+                        ></i>
+                        Rīga, Latvia</span
+                      >
+                    </div>
+                    <div class="project-date-card">
+                      <time datetime="2027-04-30">
+                        <strong>30–06</strong>
+                        <small>APR / MAY · 2027</small>
+                      </time>
+                      <span
+                        ><i
+                          class="fas fa-map-marker-alt"
+                          aria-hidden="true"
+                        ></i>
+                        Belek, Türkiye</span
+                      >
+                    </div>
+                  </div>
+                </div>
+                <a href="europestage/europestage.html" class="project-link">
+                  Discover Europestage <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </article>
+
+            <article class="project-card project-wod">
+              <div class="project-media">
+                <video
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  autoplay
+                  poster="media/413.jpg"
+                >
+                  <source src="media/wodLV.mp4" type="video/mp4" />
+                </video>
+                <div class="project-shade"></div>
+                <span class="project-number">PROJECT / 02</span>
+              </div>
+              <div class="project-body" data-label="02">
+                <div class="project-brand">
+                  <img
+                    src="media/wod-logo-latvia-light.png"
+                    alt="World of Dance Latvia"
+                  />
+                </div>
+                <p>
+                  The iconic global championship platform comes to Latvia,
+                  opening a path from the regional stage to the World Finals.
+                </p>
+                <div class="project-upcoming">
+                  <span class="project-upcoming-label">Upcoming event</span>
+                  <div class="project-date-grid project-date-grid-single">
+                    <div class="project-date-card">
+                      <time datetime="2027-05-23">
+                        <strong>23</strong>
+                        <small>MAY · 2027</small>
+                      </time>
+                      <span
+                        ><i
+                          class="fas fa-map-marker-alt"
+                          aria-hidden="true"
+                        ></i>
+                        Rīga, Latvia</span
+                      >
+                    </div>
+                    <div class="project-qualification">
+                      <i class="fas fa-trophy" aria-hidden="true"></i>
+                      <span
+                        ><small>Championship Series</small
+                        ><strong>Path to World Finals</strong></span
+                      >
+                    </div>
+                  </div>
+                </div>
+                <a
+                  href="worldofdancelatvia/worldofdancelatvia.html"
+                  class="project-link"
+                >
+                  Discover WOD Latvia <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="impact-section" aria-label="Space4Dance in numbers">
+        <div class="shell impact-grid">
+          <div class="impact-copy">
+            <span class="section-index">Built through movement</span>
+            <h2>Numbers with<br /><em>real stories behind them.</em></h2>
+          </div>
+          <div class="stat">
+            <strong data-count="10">10+</strong
+            ><span>Years of proven success</span>
+          </div>
+          <div class="stat">
+            <strong data-count="20000">20K+</strong
+            ><span>Awards presented</span>
+          </div>
+          <div class="stat">
+            <strong data-count="25000">25K+</strong
+            ><span>Delighted dancers</span>
+          </div>
+          <div class="stat">
+            <strong data-count="30000">30K+</strong
+            ><span>Visitors at our events</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="events-section" class="section calendar-section">
+        <div class="shell">
+          <header class="section-header split-header calendar-header">
+            <div>
+              <span class="section-index">02 / Event calendar</span>
+              <h2>Next stops on<br /><em>our dance map.</em></h2>
+            </div>
+            <p>
+              Plan your season, choose your stage and join dancers from across
+              Europe at our upcoming competitions.
+            </p>
+          </header>
+
+          <div class="calendar-list">
+            <article class="calendar-card event-riga">
+              <div class="calendar-date">
+                <span>FEB</span>
+                <strong>27–28</strong>
+                <small>2027</small>
+              </div>
+              <div class="calendar-image">
+                <img
+                  src="media/397.jpg"
+                  alt="Dancers performing on the Space4Dance stage"
+                  loading="lazy"
+                />
+                <span class="event-brand">EUROPESTAGE</span>
+              </div>
+              <div class="calendar-info">
+                <div class="event-topline">
+                  <span class="status"><i></i> Registration open</span>
+                  <span>International dance contest</span>
+                </div>
+                <h3>Europestage Rīga</h3>
+                <div class="event-meta">
+                  <span
+                    ><i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                    Ķīpsalas iela 8, Rīga, Latvia</span
+                  >
+                  <span
+                    ><i class="fas fa-calendar" aria-hidden="true"></i> Saturday
+                    &amp; Sunday</span
+                  >
+                </div>
+                <div class="event-spots">
+                  <span>Available spots</span>
+                  <iframe
+                    title="Available spots for Europestage Rīga"
+                    src="spots_riga.asp"
+                    scrolling="no"
+                    frameborder="0"
+                    height="50"
+                    width="160"
+                    >Your browser does not support inline frames.</iframe
+                  >
+                </div>
+                <div class="event-actions">
+                  <a
+                    href="https://space4dance.org/myaccount/"
+                    class="button button-coral"
+                    >Participate</a
+                  >
+                  <a href="europestage/riga.html" class="text-link"
+                    >Event details <span>↗</span></a
+                  >
+                </div>
+              </div>
+            </article>
+
+            <article class="calendar-card event-turkey">
+              <div class="calendar-date">
+                <span>APR / MAY</span>
+                <strong>30–06</strong>
+                <small>2027</small>
+              </div>
+              <div class="calendar-image">
+                <img
+                  src="media/397.jpg"
+                  alt="Europestage dancers performing"
+                  loading="lazy"
+                />
+                <span class="event-brand">EUROPESTAGE</span>
+              </div>
+              <div class="calendar-info">
+                <div class="event-topline">
+                  <span class="status"><i></i> Registration open</span>
+                  <span>Dance · travel · celebration</span>
+                </div>
+                <h3>Europestage Türkiye</h3>
+                <div class="event-meta">
+                  <span
+                    ><i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                    Belek, Türkiye</span
+                  >
+                  <span
+                    ><i class="fas fa-calendar" aria-hidden="true"></i> 7-day
+                    event experience</span
+                  >
+                </div>
+                <div class="event-spots">
+                  <span>Available spots</span>
+                  <iframe
+                    title="Available spots for Europestage Türkiye"
+                    src="spots_belek.asp"
+                    scrolling="no"
+                    frameborder="0"
+                    height="50"
+                    width="160"
+                    >Your browser does not support inline frames.</iframe
+                  >
+                </div>
+                <div class="event-actions">
+                  <a
+                    href="https://space4dance.org/myaccount/"
+                    class="button button-coral"
+                    >Participate</a
+                  >
+                  <a href="europestage/turkey.html" class="text-link"
+                    >Event details <span>↗</span></a
+                  >
+                </div>
+              </div>
+            </article>
+
+            <article class="calendar-card event-wod">
+              <div class="calendar-date">
+                <span>MAY</span>
+                <strong>23</strong>
+                <small>2027</small>
+              </div>
+              <div class="calendar-image">
+                <img
+                  src="media/413.jpg"
+                  alt="World of Dance Latvia performer"
+                  loading="lazy"
+                />
+                <span class="event-brand">WORLD OF DANCE</span>
+              </div>
+              <div class="calendar-info">
+                <div class="event-topline">
+                  <span class="status"><i></i> Registration open</span>
+                  <span>Championship Series</span>
+                </div>
+                <h3>World of Dance Latvia</h3>
+                <div class="event-meta">
+                  <span
+                    ><i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                    Ķīpsalas iela 8, Rīga, Latvia</span
+                  >
+                  <span
+                    ><i class="fas fa-trophy" aria-hidden="true"></i> Qualify
+                    for World Finals</span
+                  >
+                </div>
+                <div class="event-spots">
+                  <span>Available spots</span>
+                  <iframe
+                    title="Available spots for World of Dance Latvia"
+                    src="spots_wod.asp"
+                    scrolling="no"
+                    frameborder="0"
+                    height="50"
+                    width="160"
+                    >Your browser does not support inline frames.</iframe
+                  >
+                </div>
+                <div class="event-actions">
+                  <a
+                    href="https://space4dance.org/myaccount/"
+                    class="button button-blue"
+                    >Participate</a
+                  >
+                  <a
+                    href="worldofdancelatvia/worldofdancelatvia.html"
+                    class="text-link"
+                    >Event details <span>↗</span></a
+                  >
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="about-section" class="section team-section">
+        <div class="shell">
+          <header class="section-header team-heading">
+            <span class="section-index">03 / Behind the scenes</span>
+            <h2>Meet the crew<br /><em>making it happen.</em></h2>
+            <p>
+              Producers, organisers and problem-solvers united by a love of
+              dance and a talent for creating unforgettable stages.
+            </p>
+          </header>
+
+          <div class="team-grid">
+            <article class="team-card team-card-featured">
+              <img
+                src="media/Markina.jpeg"
+                alt="Anastasiia M."
+                loading="lazy"
+              />
+              <div class="team-info">
+                <span>Founder · Chair</span>
+                <h3>Anastasiia M.</h3>
+                <p>Ms. Always Right</p>
+                <a class="team-email" href="mailto:info@space4dance.org"
+                  >info@space4dance.org</a
+                >
+              </div>
+            </article>
+            <article class="team-card">
+              <img src="media/Alex.jpeg" alt="Alex P." loading="lazy" />
+              <div class="team-info">
+                <span>Founder · CEO</span>
+                <h3>Alex P.</h3>
+                <p>Mr. Ideas</p>
+                <a class="team-email" href="mailto:info@space4dance.org"
+                  >info@space4dance.org</a
+                >
+              </div>
+            </article>
+            <article class="team-card">
+              <img src="media/Angie.jpg" alt="Anželika G." loading="lazy" />
+              <div class="team-info">
+                <span>Events Manager</span>
+                <h3>Anželika G.</h3>
+                <p>Ms. Solutions</p>
+                <a class="team-email" href="mailto:anzelika@space4dance.org"
+                  >anzelika@space4dance.org</a
+                >
+              </div>
+            </article>
+            <article class="team-card">
+              <img src="media/Simon.jpeg" alt="Simon F." loading="lazy" />
+              <div class="team-info">
+                <span>Director UK &amp; IRL</span>
+                <h3>Simon F.</h3>
+                <p>Mr. Perfection</p>
+              </div>
+            </article>
+            <article class="team-card">
+              <img src="media/Valerija.jpg" alt="Valerija D." loading="lazy" />
+              <div class="team-info">
+                <span>Events Manager</span>
+                <h3>Valerija D.</h3>
+                <p>Ms. Organiser</p>
+              </div>
+            </article>
+
+            <article class="team-card">
+              <img src="media/solvita.jpeg" alt="Solvita S." loading="lazy" />
+              <div class="team-info">
+                <span>Studio Liaison</span>
+                <h3>Solvita S.</h3>
+                <p>Ms. Busy</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="partner-section" class="partner-section">
+        <div class="shell partner-card">
+          <div class="partner-orbit orbit-one" aria-hidden="true"></div>
+          <div class="partner-orbit orbit-two" aria-hidden="true"></div>
+          <div class="partner-copy">
+            <span class="section-index">04 / Partnership</span>
+            <h2>Put your brand<br /><em>in the spotlight.</em></h2>
+            <p>
+              Connect with dancers, studios, families and international
+              audiences through meaningful event partnerships built around your
+              goals.
+            </p>
+            <a
+              href="mailto:info@space4dance.org?subject=Space4Dance%20partnership"
+              class="button button-dark"
+            >
+              Become a partner <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+          <div class="partner-benefits">
+            <div>
+              <span>01</span><strong>Brand visibility</strong>
+              <p>On-site, online and across event communications.</p>
+            </div>
+            <div>
+              <span>02</span><strong>Custom partnership</strong>
+              <p>We will create a format that fits your brand and goals.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contacts-section" class="footer">
+      <div class="shell">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <img src="media/S4D-8.png" alt="Space4Dance" />
+            <p>
+              We are not just dance competitions — we are the platform for your
+              growth.
+            </p>
+          </div>
+          <div class="footer-column">
+            <h3>Navigate</h3>
+            <a href="#projects-section">Projects</a>
+            <a href="#events-section">Calendar</a>
+            <a href="#about-section">Team</a>
+            <a href="#partner-section">Partners</a>
+          </div>
+          <div class="footer-column">
+            <h3>Our projects</h3>
+            <a href="europestage/europestage.html">Europestage</a>
+            <a href="worldofdancelatvia/worldofdancelatvia.html"
+              >World of Dance Latvia</a
+            >
+            <a href="https://space4dance.org/myaccount/tickets/buy_tickets.asp"
+              >Buy tickets</a
+            >
+          </div>
+          <div class="footer-column footer-contact">
+            <h3>Talk to us</h3>
+            <a href="mailto:info@space4dance.org">info@space4dance.org</a>
+            <a href="tel:+37125511416">+371 25511416</a>
+            <a href="tel:+37127562403">+371 27562403</a>
+            <span>Rīga, Latvia</span>
+          </div>
+        </div>
+
+        <div class="footer-social">
+          <div>
+            <span>EUROPESTAGE</span>
+            <a
+              href="https://www.facebook.com/europestagelatvia"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Europestage on Facebook"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a
+              href="https://www.instagram.com/europestage"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Europestage on Instagram"
+              ><i class="fab fa-instagram"></i
+            ></a>
+          </div>
+          <div>
+            <span>WORLD OF DANCE LATVIA</span>
+            <a
+              href="https://www.instagram.com/worldofdancelatvia"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="World of Dance Latvia on Instagram"
+              ><i class="fab fa-instagram"></i
+            ></a>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>© 2026 Space4Dance. All rights reserved.</p>
+          <div>
+            <a href="#">Privacy Policy</a><a href="#">Terms of Service</a
+            ><a href="#">Cookie Policy</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      (() => {
+        "use strict";
+        const navbar = document.getElementById("navbar");
+        const toggle = document.getElementById("menu-toggle");
+        const menu = document.getElementById("mobile-menu");
+
+        function setMenu(open) {
+          toggle.classList.toggle("active", open);
+          toggle.setAttribute("aria-expanded", String(open));
+          toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+          menu.classList.toggle("active", open);
+          menu.setAttribute("aria-hidden", String(!open));
+          document.body.classList.toggle("menu-open", open);
+        }
+
+        toggle.addEventListener("click", () =>
+          setMenu(!menu.classList.contains("active")),
+        );
+        menu
+          .querySelectorAll("a")
+          .forEach((link) =>
+            link.addEventListener("click", () => setMenu(false)),
+          );
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") setMenu(false);
+        });
+        window.addEventListener("resize", () => {
+          if (window.innerWidth > 1020) setMenu(false);
+        });
+        window.addEventListener(
+          "scroll",
+          () => {
+            navbar.classList.toggle("scrolled", window.scrollY > 40);
+          },
+          { passive: true },
+        );
+
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", (event) => {
+            const target = document.querySelector(anchor.getAttribute("href"));
+            if (!target) return;
+            event.preventDefault();
+            target.scrollIntoView({
+              behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
+                ? "auto"
+                : "smooth",
+            });
+          });
+        });
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) entry.target.classList.add("revealed");
+            });
+          },
+          { threshold: 0.12 },
+        );
+
+        document
+          .querySelectorAll(
+            ".project-card, .calendar-card, .team-card, .stat, .section-header, .impact-copy, .partner-card",
+          )
+          .forEach((item) => observer.observe(item));
+      })();
+    </script>
+  </body>
+</html>

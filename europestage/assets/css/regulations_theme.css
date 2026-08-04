@@ -1,0 +1,937 @@
+.regulations-page {
+  --reg-ink: #0b0b0d;
+  --reg-paper: #f1ebe2;
+  --reg-card: #fffdf9;
+  --reg-red: #df2f22;
+  --reg-orange: #f47a21;
+  --reg-line: rgba(18, 15, 14, 0.12);
+  color: var(--reg-ink);
+  background:
+    radial-gradient(
+      circle at 85% 3%,
+      rgba(223, 47, 34, 0.22),
+      transparent 30rem
+    ),
+    linear-gradient(180deg, #0b0b0d 0 520px, var(--reg-paper) 920px);
+  font-family: "Inter", sans-serif;
+}
+.regulations-page::before {
+  content: "RULES / RĪGA / EUROPESTAGE";
+  position: absolute;
+  z-index: 0;
+  top: 145px;
+  left: 50%;
+  width: 100%;
+  color: rgba(255, 255, 255, 0.035);
+  font:
+    900 clamp(62px, 12vw, 180px)/0.85 "Montserrat",
+    sans-serif;
+  letter-spacing: -0.075em;
+  text-align: center;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+/* Regulations navigation */
+.regulations-page .navbar {
+  position: fixed !important;
+  z-index: 1000;
+  inset: 0 0 auto;
+  height: 86px;
+  padding: 10px 0 !important;
+  background: transparent !important;
+}
+.regulations-page .navbar-container {
+  width: min(1280px, calc(100% - 32px));
+  height: 66px;
+  margin: auto;
+  padding: 0 10px 0 0;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 8px;
+  background: rgba(9, 9, 11, 0.82);
+  box-shadow: 0 14px 45px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  transition:
+    background 0.25s,
+    box-shadow 0.25s;
+}
+.regulations-page .navbar.scrolled .navbar-container {
+  background: rgba(9, 9, 11, 0.97);
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.34);
+}
+.regulations-page .navbar-logo {
+  align-self: stretch;
+  min-width: 155px;
+  padding: 0 22px;
+  display: flex;
+  align-items: center;
+  border-right: 1px solid rgba(255, 255, 255, 0.13);
+  background: rgba(255, 255, 255, 0.025);
+}
+.regulations-page .navbar-logo img {
+  width: 92px;
+  height: 48px;
+  object-fit: contain;
+}
+.regulations-page .navbar-menu {
+  align-self: stretch;
+  display: flex;
+  gap: 0;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+.regulations-page .navbar-menu li {
+  display: flex;
+}
+.regulations-page .navbar-menu a {
+  position: relative;
+  min-width: 112px;
+  padding: 0 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #d8d4d1;
+  font:
+    650 11px/1.2 "Montserrat",
+    sans-serif;
+  text-decoration: none;
+  transition:
+    color 0.2s,
+    background 0.2s;
+}
+.regulations-page .navbar-menu a::after {
+  content: "";
+  position: absolute;
+  right: calc(100% - 17px);
+  bottom: 0;
+  left: 17px;
+  height: 2px;
+  background: var(--reg-orange);
+  transition: right 0.25s;
+}
+.regulations-page .navbar-menu a:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.045);
+}
+.regulations-page .navbar-menu a:hover::after,
+.regulations-page .navbar-menu a[href="riga.html"]::after {
+  right: 17px;
+}
+.regulations-page .navbar-menu a[href="riga.html"] {
+  color: #fff;
+}
+.regulations-page .navbar-icons {
+  display: flex;
+  gap: 7px;
+  padding-left: 10px;
+  border-left: 1px solid rgba(255, 255, 255, 0.13);
+}
+.regulations-page .navbar-icon,
+.regulations-page .mobile-menu-icon {
+  min-height: 40px;
+  padding: 0 14px !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 4px !important;
+  color: #fff !important;
+  font:
+    650 10px/1.2 "Montserrat",
+    sans-serif !important;
+  text-decoration: none;
+}
+.regulations-page .buy-tickets-btn {
+  background: var(--reg-red) !important;
+  border-color: var(--reg-red) !important;
+}
+.regulations-page .navbar-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  padding: 9px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.05);
+}
+.regulations-page .hamburger-line {
+  display: block;
+  width: 100%;
+  height: 2px;
+  margin: 5px 0;
+  background: #fff;
+  transition: 0.25s;
+}
+.regulations-page .mobile-menu {
+  position: fixed;
+  z-index: 990;
+  inset: 0;
+  visibility: hidden;
+  opacity: 0;
+  padding-top: 112px;
+  background:
+    radial-gradient(
+      circle at 85% 18%,
+      rgba(223, 47, 34, 0.18),
+      transparent 28rem
+    ),
+    rgba(10, 9, 10, 0.99);
+  transform: translateY(-12px);
+  transition: 0.25s;
+}
+.regulations-page .mobile-menu.active {
+  visibility: visible;
+  opacity: 1;
+  transform: none;
+}
+.regulations-page .mobile-menu-content {
+  width: min(520px, calc(100% - 40px));
+  margin: auto;
+  padding: 25px 0;
+}
+.regulations-page .mobile-menu-links {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.regulations-page .mobile-menu-links a {
+  display: block;
+  padding: 15px 3px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+  color: #fff;
+  font:
+    750 28px/1.2 "Montserrat",
+    sans-serif;
+  text-decoration: none;
+}
+.regulations-page .mobile-menu-icons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 28px;
+}
+.regulations-page > .container {
+  position: relative;
+  z-index: 1;
+  max-width: 1180px;
+  padding: 20px;
+}
+.regulations-page .header {
+  margin: 100px 0 46px;
+  padding: 70px 0 35px;
+}
+.regulations-page .header::before {
+  content: "EUROPESTAGE / OFFICIAL DOCUMENT";
+  display: block;
+  width: fit-content;
+  margin: 0 auto 18px;
+  padding: 7px 10px;
+  background: var(--reg-red);
+  color: #fff;
+  font:
+    750 9px/1.2 "Montserrat",
+    sans-serif;
+  letter-spacing: 0.16em;
+}
+.regulations-page .header h1 {
+  margin: 0;
+  color: #fff;
+  font:
+    900 clamp(42px, 7vw, 84px)/0.95 "Montserrat",
+    sans-serif;
+  letter-spacing: -0.06em;
+  text-shadow: none;
+}
+.regulations-page .header .date {
+  margin-top: 18px;
+  color: #d5d0cc;
+  font:
+    650 13px/1.4 "Montserrat",
+    sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.regulations-page .content {
+  overflow: visible;
+  border: 1px solid var(--reg-line);
+  border-radius: 6px;
+  background: var(--reg-card);
+  box-shadow: 0 30px 80px rgba(35, 23, 18, 0.14);
+}
+.regulations-page .section {
+  position: relative;
+  padding: clamp(30px, 5vw, 60px);
+  border-color: var(--reg-line);
+}
+.regulations-page .section::before {
+  content: counter(reg-section, decimal-leading-zero);
+  position: absolute;
+  top: 22px;
+  right: 25px;
+  color: rgba(11, 11, 13, 0.17);
+  font:
+    750 9px/1 "Montserrat",
+    sans-serif;
+  letter-spacing: 0.13em;
+}
+.regulations-page .content {
+  counter-reset: reg-section;
+}
+.regulations-page .section {
+  counter-increment: reg-section;
+}
+.regulations-page .section-header {
+  gap: 16px;
+  margin-bottom: 28px;
+  opacity: 1;
+  transform: none;
+  text-align: left;
+}
+.regulations-page .section-title {
+  margin: 0;
+  color: var(--reg-ink);
+  font:
+    850 clamp(25px, 3.2vw, 38px)/1.05 "Montserrat",
+    sans-serif;
+  letter-spacing: -0.045em;
+}
+.regulations-page .section-icon {
+  flex: 0 0 46px;
+  width: 46px;
+  height: 46px;
+  margin: 0;
+  border-radius: 3px;
+  background: var(--reg-red);
+  box-shadow: 6px 6px 0 #e8d9c7;
+  font-size: 19px;
+}
+.regulations-page .card,
+.regulations-page .info-card,
+.regulations-page .text-content,
+.regulations-page .steps-list,
+.regulations-page .legal-text,
+.regulations-page .company-note {
+  border: 1px solid var(--reg-line);
+  border-radius: 4px;
+  background: #f8f4ee;
+  box-shadow: none;
+}
+.regulations-page .card {
+  padding: 25px 20px;
+}
+.regulations-page .card:hover {
+  border-color: var(--reg-orange);
+  box-shadow: 0 16px 35px rgba(30, 21, 17, 0.09);
+  transform: translateY(-4px);
+}
+.regulations-page .card-title,
+.regulations-page .info-card h4,
+.regulations-page .text-content h5 {
+  color: var(--reg-ink);
+  font-family: "Montserrat", sans-serif;
+}
+.regulations-page .card-content1,
+.regulations-page .info-card p,
+.regulations-page .info-card ul,
+.regulations-page .text-content p,
+.regulations-page .steps-list li,
+.regulations-page .legal-text {
+  color: #5c5652;
+}
+.regulations-page .info-card,
+.regulations-page .text-content {
+  border-left: 3px solid var(--reg-orange);
+}
+.regulations-page .info-card + .info-card {
+  margin-top: 16px;
+}
+.regulations-page .criteria-grid {
+  gap: 12px;
+}
+.regulations-page .criteria-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  background: var(--reg-ink);
+}
+.regulations-page .criteria-item:nth-child(even) {
+  background: #262126;
+}
+.regulations-page .criteria-item::after {
+  content: "/100";
+  position: absolute;
+  right: 10px;
+  bottom: 5px;
+  color: rgba(255, 255, 255, 0.12);
+  font:
+    800 25px/1 "Montserrat",
+    sans-serif;
+}
+.regulations-page .criteria-points {
+  color: #ff9561;
+  font-family: "Montserrat", sans-serif;
+}
+.regulations-page .highlight-box {
+  border-radius: 4px;
+  background: linear-gradient(125deg, var(--reg-red), #b01d18);
+  box-shadow: 10px 10px 0 #ead7c7;
+}
+.regulations-page .highlight-box .prize {
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: -0.05em;
+}
+.regulations-page .price-card {
+  border-radius: 4px;
+  background: var(--reg-ink);
+}
+.regulations-page .price-card:nth-child(even) {
+  background: #292327;
+}
+.regulations-page .price-amount {
+  color: #ff8f58;
+  font-family: "Montserrat", sans-serif;
+}
+.regulations-page .age-groups {
+  gap: 9px;
+}
+.regulations-page .age-badge,
+.regulations-page .category-badge {
+  border: 1px solid var(--reg-line);
+  border-radius: 3px;
+  background: #fff;
+  color: var(--reg-ink);
+  font:
+    750 12px/1.2 "Montserrat",
+    sans-serif;
+}
+.regulations-page .age-badge {
+  min-width: 82px;
+  text-align: center;
+}
+.regulations-page .age-badge:last-child,
+.regulations-page .category-badge:nth-child(2n) {
+  border-color: var(--reg-red);
+  color: var(--reg-red);
+}
+.regulations-page .warning-box {
+  border: 0;
+  border-left: 3px solid var(--reg-orange);
+  border-radius: 3px;
+  background: #fff0dc;
+  color: #6c4820;
+}
+.regulations-page .company-note {
+  border-left: 3px solid var(--reg-red);
+  color: #544d49;
+}
+.regulations-page .company-note strong {
+  color: var(--reg-red);
+}
+.regulations-page .contact-info {
+  justify-content: flex-start;
+}
+.regulations-page .contact-item {
+  color: #514c49;
+  font-size: 15px;
+}
+.regulations-page .contact-icon {
+  border-radius: 3px;
+  background: var(--reg-red);
+}
+.regulations-page .apply-button {
+  border-radius: 3px;
+  background: var(--reg-red);
+  font:
+    750 12px/1.2 "Montserrat",
+    sans-serif;
+  text-transform: uppercase;
+}
+.regulations-page .apply-button:hover {
+  color: #fff;
+  box-shadow: 0 12px 30px rgba(223, 47, 34, 0.2);
+}
+.regulations-page .footer {
+  margin-top: 90px;
+}
+.regulations-page .footer {
+  position: relative;
+  margin-top: 90px;
+  padding: 64px 0 26px;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 12% 20%,
+      rgba(223, 47, 34, 0.13),
+      transparent 24rem
+    ),
+    #0a090b;
+  color: #fff;
+  text-align: left;
+}
+.regulations-page .footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--reg-red) 0 22%,
+    var(--reg-orange) 22% 34%,
+    transparent 34%
+  );
+}
+.regulations-page .footer-content {
+  position: relative;
+  width: min(1180px, calc(100% - 48px));
+  margin: auto;
+  display: grid;
+  grid-template-columns: minmax(190px, 1.2fr) minmax(220px, 1fr) auto;
+  grid-template-areas:
+    "logo follow login"
+    "logo social login"
+    "bottom bottom bottom";
+  align-items: center;
+  column-gap: clamp(35px, 7vw, 100px);
+}
+.regulations-page .footer-logo {
+  grid-area: logo;
+  align-self: center;
+}
+.regulations-page .footer-logo img {
+  width: 160px;
+  height: 86px;
+  margin: 0;
+  object-fit: contain;
+  object-position: left center;
+}
+.regulations-page .follow-text {
+  grid-area: follow;
+  margin: 0 0 13px;
+  color: #aaa5a0;
+  font:
+    700 10px/1.2 "Montserrat",
+    sans-serif;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.regulations-page .social-icons {
+  grid-area: social;
+  display: flex;
+  justify-content: flex-start;
+  gap: 8px;
+  margin: 0;
+}
+.regulations-page .social-icon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.025);
+  color: #fff;
+  text-decoration: none;
+  transition:
+    color 0.2s,
+    border-color 0.2s,
+    background 0.2s,
+    transform 0.2s;
+}
+.regulations-page .social-icon:hover {
+  border-color: var(--reg-orange);
+  background: var(--reg-orange);
+  color: #0b0b0d;
+  transform: translateY(-2px);
+}
+.regulations-page .login-btn {
+  grid-area: login;
+  min-width: 145px;
+  margin: 0;
+  padding: 13px 23px;
+  border: 1px solid var(--reg-red);
+  border-radius: 4px;
+  background: transparent;
+  color: #fff;
+  font:
+    700 11px/1.2 "Montserrat",
+    sans-serif;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+.regulations-page .login-btn:hover {
+  background: var(--reg-red);
+  color: #fff;
+  transform: translateY(-2px);
+}
+.regulations-page .footer-bottom {
+  grid-area: bottom;
+  margin-top: 48px;
+  padding-top: 22px;
+  display: flex;
+  justify-content: space-between;
+  gap: 25px;
+  border-top: 1px solid rgba(255, 255, 255, 0.11);
+  color: #777277;
+  font-size: 12px;
+}
+.regulations-page .footer-bottom p {
+  margin: 0;
+}
+.regulations-page .powered-by a {
+  color: #e88b73;
+  text-decoration: none;
+}
+.regulations-page .powered-by a:hover {
+  color: #fff;
+}
+@media (max-width: 768px) {
+  .regulations-page .navbar {
+    height: 74px;
+    padding: 6px 0 !important;
+  }
+  .regulations-page .navbar-container {
+    width: calc(100% - 20px);
+    height: 62px;
+  }
+  .regulations-page .navbar-logo {
+    min-width: 126px;
+    padding: 0 16px;
+  }
+  .regulations-page .navbar-logo img {
+    width: 86px;
+  }
+  .regulations-page .navbar-menu,
+  .regulations-page .navbar-icons {
+    display: none;
+  }
+  .regulations-page .navbar-toggle {
+    display: block;
+    margin-left: auto;
+  }
+  .regulations-page .navbar-toggle.active .hamburger-line:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .regulations-page .navbar-toggle.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+  .regulations-page .navbar-toggle.active .hamburger-line:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+  .regulations-page .mobile-menu {
+    padding-top: 90px;
+  }
+  .regulations-page::before {
+    top: 125px;
+  }
+  .regulations-page > .container {
+    padding: 10px;
+  }
+  .regulations-page .header {
+    margin-top: 82px;
+    padding: 52px 10px 28px;
+  }
+  .regulations-page .section {
+    padding: 32px 22px;
+  }
+  .regulations-page .section-header {
+    align-items: flex-start;
+    flex-direction: row;
+    text-align: left;
+  }
+  .regulations-page .section-icon {
+    margin: 0;
+  }
+  .regulations-page .criteria-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .regulations-page .contact-info {
+    flex-direction: column;
+    gap: 14px;
+  }
+  .regulations-page .footer {
+    margin-top: 60px;
+    padding: 52px 0 24px;
+    text-align: center;
+  }
+  .regulations-page .footer::before {
+    background: linear-gradient(
+      90deg,
+      var(--reg-red) 0 60%,
+      var(--reg-orange) 60% 78%,
+      transparent 78%
+    );
+  }
+  .regulations-page .footer-content {
+    width: min(100% - 32px, 520px);
+    grid-template-columns: 1fr;
+    grid-template-areas: "logo" "follow" "social" "login" "bottom";
+    justify-items: center;
+    row-gap: 0;
+  }
+  .regulations-page .footer-logo img {
+    width: 145px;
+    height: 76px;
+    margin: 0 auto;
+    object-position: center;
+  }
+  .regulations-page .follow-text {
+    margin: 17px 0 14px;
+  }
+  .regulations-page .social-icons {
+    justify-content: center;
+  }
+  .regulations-page .social-icon {
+    width: 46px;
+    height: 46px;
+  }
+  .regulations-page .login-btn {
+    width: min(100%, 280px);
+    margin-top: 24px;
+    padding: 15px 22px;
+  }
+  .regulations-page .footer-bottom {
+    width: 100%;
+    margin-top: 38px;
+    padding-top: 20px;
+    align-items: center;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 11px;
+  }
+}
+@media (max-width: 480px) {
+  .regulations-page .criteria-grid {
+    grid-template-columns: 1fr;
+  }
+  .regulations-page .section-header {
+    flex-direction: column;
+  }
+  .regulations-page .header h1 {
+    font-size: 38px;
+  }
+  .regulations-page .footer {
+    padding-top: 46px;
+  }
+  .regulations-page .footer-content {
+    width: calc(100% - 28px);
+  }
+}
+
+/* Türkiye regulations — same system, warm destination accent */
+.turkey-regulations-page {
+  --reg-red: #d85a24;
+  --reg-orange: #f29a45;
+  --reg-paper: #eee5d7;
+  --reg-card: #fffdf8;
+  background:
+    radial-gradient(
+      circle at 84% 3%,
+      rgba(242, 154, 69, 0.23),
+      transparent 31rem
+    ),
+    linear-gradient(180deg, #0d0b09 0 520px, var(--reg-paper) 920px);
+}
+.turkey-regulations-page::before {
+  content: "RULES / TÜRKİYE / EUROPESTAGE";
+}
+.turkey-regulations-page .header::before {
+  content: "EUROPESTAGE / OFFICIAL DOCUMENT / TÜRKİYE";
+  background: var(--reg-orange);
+  color: #17100b;
+}
+.turkey-regulations-page .header .location {
+  margin: 17px 0 8px;
+  color: #fff;
+  font:
+    750 clamp(18px, 2.4vw, 28px)/1.25 "Montserrat",
+    sans-serif;
+  letter-spacing: -0.02em;
+}
+.turkey-regulations-page .header .date {
+  margin-top: 5px;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #e4d8cc;
+}
+.turkey-regulations-page .navbar-menu a[href="riga.html"] {
+  color: #d8d4d1;
+}
+.turkey-regulations-page .navbar-menu a[href="riga.html"]::after {
+  right: calc(100% - 17px);
+}
+.turkey-regulations-page .navbar-menu a[href="turkey.html"] {
+  color: #fff;
+}
+.turkey-regulations-page .navbar-menu a[href="turkey.html"]::after {
+  right: 17px;
+}
+.turkey-regulations-page .section-icon {
+  background: var(--reg-orange);
+  color: #17100b;
+  box-shadow: 6px 6px 0 #e6d4bd;
+}
+.turkey-regulations-page .age-badge,
+.turkey-regulations-page .format-badge,
+.turkey-regulations-page .category-badge {
+  border: 1px solid var(--reg-line);
+  border-radius: 3px;
+  background: #fff;
+  box-shadow: none;
+  color: var(--reg-ink);
+  font:
+    750 12px/1.2 "Montserrat",
+    sans-serif;
+}
+.turkey-regulations-page .format-badge {
+  padding: 14px 22px;
+}
+.turkey-regulations-page .age-badge:nth-child(even),
+.turkey-regulations-page .category-badge:nth-child(even) {
+  border-color: var(--reg-orange);
+  color: #a5441d;
+}
+.turkey-regulations-page .info-card,
+.turkey-regulations-page .legal-text,
+.turkey-regulations-page .feature-card,
+.turkey-regulations-page .spec-item,
+.turkey-regulations-page .included-box,
+.turkey-regulations-page .warning-box {
+  border: 1px solid var(--reg-line);
+  border-left: 3px solid var(--reg-orange);
+  border-radius: 4px;
+  background: #f8f2e9;
+  box-shadow: none;
+  color: #554e48;
+}
+.turkey-regulations-page .feature-card,
+.turkey-regulations-page .spec-item {
+  padding: 25px;
+}
+.turkey-regulations-page .feature-card h4,
+.turkey-regulations-page .spec-item h4,
+.turkey-regulations-page .info-card h4 {
+  color: var(--reg-ink);
+  font-family: "Montserrat", sans-serif;
+}
+.turkey-regulations-page .feature-card i,
+.turkey-regulations-page .spec-icon {
+  color: var(--reg-orange);
+}
+.turkey-regulations-page .hotel-showcase {
+  overflow: hidden;
+  border: 1px solid var(--reg-line);
+  border-radius: 4px;
+  background: #171310;
+  box-shadow: none;
+  color: #fff;
+}
+.turkey-regulations-page .hotel-showcase h3,
+.turkey-regulations-page .hotel-showcase h4 {
+  color: #fff;
+}
+.turkey-regulations-page .hotel-features {
+  gap: 12px;
+}
+.turkey-regulations-page .criteria-item {
+  background: #171310;
+}
+.turkey-regulations-page .criteria-item:nth-child(even) {
+  background: #2b231d;
+}
+.turkey-regulations-page .criteria-points {
+  color: #ffad64;
+}
+.turkey-regulations-page .awards-grid,
+.turkey-regulations-page .pricing-grid {
+  gap: 14px;
+}
+.turkey-regulations-page .award-card,
+.turkey-regulations-page .price-card {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 4px;
+  background: #171310;
+  box-shadow: none;
+  color: #fff;
+}
+.turkey-regulations-page .award-card:nth-child(even),
+.turkey-regulations-page .price-card:nth-child(even) {
+  background: #2b231d;
+}
+.turkey-regulations-page .award-places,
+.turkey-regulations-page .price-amount {
+  color: #ffad64;
+  font-family: "Montserrat", sans-serif;
+}
+.turkey-regulations-page .highlight-box {
+  border-radius: 4px;
+  background: linear-gradient(125deg, #d85a24, #9f3418);
+  box-shadow: 10px 10px 0 #e2cdb4;
+}
+.turkey-regulations-page .deadline-box {
+  border: 0;
+  border-left: 3px solid var(--reg-orange);
+  border-radius: 4px;
+  background: #fff0dd;
+  box-shadow: none;
+  color: #5f4229;
+}
+.turkey-regulations-page .deadline-date {
+  color: #b4471e;
+  font-family: "Montserrat", sans-serif;
+}
+.turkey-regulations-page .included-item {
+  border-bottom-color: rgba(18, 15, 14, 0.1);
+}
+.turkey-regulations-page .included-item i {
+  color: var(--reg-orange);
+}
+.turkey-regulations-page .apply-button {
+  background: var(--reg-orange);
+  color: #17100b;
+}
+.turkey-regulations-page .apply-button:hover {
+  color: #17100b;
+  box-shadow: 0 12px 30px rgba(242, 154, 69, 0.25);
+}
+.turkey-regulations-page .contact-icon {
+  background: var(--reg-orange);
+  color: #17100b;
+}
+.turkey-regulations-page .footer::before {
+  background: linear-gradient(
+    90deg,
+    var(--reg-orange) 0 30%,
+    var(--reg-red) 30% 40%,
+    transparent 40%
+  );
+}
+@media (max-width: 768px) {
+  .turkey-regulations-page .hotel-features,
+  .turkey-regulations-page .technical-specs,
+  .turkey-regulations-page .awards-grid,
+  .turkey-regulations-page .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+  .turkey-regulations-page .footer::before {
+    background: linear-gradient(
+      90deg,
+      var(--reg-orange) 0 60%,
+      var(--reg-red) 60% 78%,
+      transparent 78%
+    );
+  }
+}

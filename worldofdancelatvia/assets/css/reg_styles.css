@@ -1,0 +1,329 @@
+/* WOD REGULATIONS — dark competition editorial theme */
+:root {
+  --page: #070810;
+  --surface: #10121d;
+  --surface-2: #151827;
+  --surface-3: #1b1e2f;
+  --text: #f7f8fc;
+  --muted: #adb4c7;
+  --line: rgba(255, 255, 255, 0.1);
+  --cyan: #00d4ff;
+  --violet: #b18aff;
+  --gold: #ffb800;
+  --danger: #ff6b7d;
+  --radius: 20px;
+  --shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at 10% 4%, rgba(0, 212, 255, .11), transparent 29rem),
+    radial-gradient(circle at 92% 34%, rgba(177, 138, 255, .09), transparent 34rem),
+    var(--page);
+  color: var(--text);
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+}
+a { color: var(--cyan); text-underline-offset: .2em; }
+a:hover { color: #7be9ff; }
+::selection { background: var(--cyan); color: #04050a; }
+
+.regulations {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  padding: 28px 24px 96px;
+}
+.regulations::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 420px;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(0, 212, 255, .06), transparent),
+    repeating-linear-gradient(115deg, transparent 0 68px, rgba(255,255,255,.018) 69px 70px);
+  mask-image: linear-gradient(#000, transparent);
+}
+.container { width: min(1180px, 100%); margin: 0 auto; position: relative; }
+
+.back-btn {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 26px max(0px, calc((100% - 1180px) / 2));
+  padding: 10px 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(16, 18, 29, .72);
+  color: var(--text);
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  backdrop-filter: blur(14px);
+  transition: .2s ease;
+}
+.back-btn::before { content: "←"; color: var(--cyan); font-size: 18px; }
+.back-btn:hover { color: #fff; border-color: rgba(0,212,255,.45); transform: translateX(-3px); }
+
+.header {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(50px, 9vw, 100px) clamp(24px, 7vw, 82px);
+  margin: 0 0 34px;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  text-align: center;
+  background:
+    radial-gradient(circle at 50% 0, rgba(0,212,255,.19), transparent 45%),
+    linear-gradient(135deg, rgba(177,138,255,.11), transparent 45%),
+    linear-gradient(180deg, #141624, #0d0f18);
+  box-shadow: var(--shadow);
+}
+.header::after {
+  content: "WOD • LATVIA • 2027";
+  position: absolute;
+  right: -16px;
+  bottom: -19px;
+  color: rgba(255,255,255,.035);
+  font: 900 clamp(34px, 7vw, 88px)/1 "Montserrat", sans-serif;
+  white-space: nowrap;
+}
+.header h1 {
+  position: relative;
+  z-index: 1;
+  max-width: 920px;
+  margin: 0 auto;
+  font: 850 clamp(28px, 5.4vw, 62px)/1.08 "Montserrat", sans-serif;
+  letter-spacing: -.04em;
+  text-wrap: balance;
+}
+.header h2 {
+  display: inline-flex;
+  position: relative;
+  z-index: 1;
+  margin: 28px 0 0;
+  padding: 8px 17px;
+  border: 1px solid rgba(0,212,255,.35);
+  border-radius: 999px;
+  background: rgba(0,212,255,.09);
+  color: var(--cyan);
+  font: 800 14px/1.2 "Montserrat", sans-serif;
+  letter-spacing: .16em;
+}
+
+.judging, .registration, .winners, .representation, .divisions {
+  position: relative;
+  margin: 22px 0;
+  padding: clamp(25px, 4vw, 42px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: linear-gradient(145deg, rgba(24,27,43,.97), rgba(13,15,24,.97));
+  box-shadow: 0 18px 46px rgba(0,0,0,.2);
+}
+.judging::before, .registration::before, .winners::before, .representation::before,
+.container > .divisions::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 28px; right: 28px;
+  height: 3px;
+  border-radius: 0 0 4px 4px;
+  background: linear-gradient(90deg, var(--cyan), var(--violet));
+}
+.registration::before { background: var(--violet); }
+.winners::before { background: var(--gold); }
+.representation::before { background: var(--cyan); }
+
+.judging h1, .registration h1, .winners h1, .representation h1, .divisions > h1 {
+  margin: 0 0 18px;
+  color: #fff;
+  font: 800 clamp(22px, 3vw, 31px)/1.2 "Montserrat", sans-serif;
+  letter-spacing: -.025em;
+}
+.judging p, .registration p, .winners p, .representation p, .divisions p {
+  max-width: 920px;
+  margin: 12px 0;
+  color: #d5d9e5;
+}
+.container > .divisions:has(> h1:only-child) {
+  margin: 48px 0 20px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  text-align: center;
+}
+.container > .divisions:has(> h1:only-child)::before { display: none; }
+.container > .divisions:has(> h1:only-child) h1 {
+  margin: 0;
+  font-size: clamp(26px, 4.5vw, 46px);
+}
+
+.divisions-showcase {
+  margin: 22px 0 54px;
+  padding: clamp(26px, 5vw, 58px);
+  border: 1px solid var(--line);
+  border-radius: 26px;
+  background:
+    radial-gradient(circle at 12% 0, rgba(0,212,255,.1), transparent 42%),
+    radial-gradient(circle at 88% 100%, rgba(255,184,0,.08), transparent 44%),
+    #0b0c14;
+  box-shadow: var(--shadow);
+}
+.divisions-showcase__intro { max-width: 780px; margin: 0 auto 38px; text-align: center; }
+.divisions-showcase__eyebrow {
+  display: block; margin-bottom: 10px; color: var(--cyan);
+  font: 800 12px/1.2 "Montserrat", sans-serif; letter-spacing: .24em;
+}
+.divisions-showcase__intro h1 {
+  margin: 0 0 13px; font: 800 clamp(24px,4vw,38px)/1.18 "Montserrat",sans-serif;
+  letter-spacing: -.03em; text-wrap: balance;
+}
+.divisions-showcase__intro p { margin: 0; color: var(--muted); }
+
+.division-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.division-card {
+  --accent: var(--cyan);
+  position: relative; display: flex; flex-direction: column;
+  padding: 28px 25px; overflow: hidden;
+  border: 1px solid var(--line); border-radius: 18px;
+  background: linear-gradient(180deg, #171927, #0d0f18);
+  box-shadow: 0 20px 40px -25px #000;
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+.division-card::before {
+  content: ""; position: absolute; top: 0; left: 22px; right: 22px; height: 3px;
+  border-radius: 0 0 4px 4px; background: var(--accent);
+}
+.division-card:hover { transform: translateY(-6px); border-color: color-mix(in srgb, var(--accent) 48%, transparent); box-shadow: 0 24px 54px -24px #000; }
+.division-card--youth { --accent: var(--violet); }
+.division-card--junior { --accent: var(--cyan); }
+.division-card--team { --accent: var(--gold); }
+.division-card__age-tag {
+  width: fit-content; margin-bottom: 16px; padding: 5px 11px;
+  border: 1px solid var(--line); border-radius: 999px;
+  background: rgba(255,255,255,.055); color: var(--accent);
+  font: 800 12px/1.3 "Montserrat",sans-serif; letter-spacing: .1em;
+}
+.division-card__title { margin: 0 0 14px; font: 800 21px/1.22 "Montserrat",sans-serif; }
+.division-card__meta {
+  display: grid; gap: 5px; margin-bottom: 19px; padding-bottom: 18px;
+  border-bottom: 1px solid var(--line); color: #ccd1df; font-size: 14px;
+}
+.division-card__meta strong { color: #fff; }
+.division-card__section h4 {
+  margin: 0 0 12px; color: var(--accent);
+  font: 750 12px/1.3 "Montserrat",sans-serif; letter-spacing: .08em; text-transform: uppercase;
+}
+.division-card__section ul { display: grid; gap: 11px; margin: 0; padding: 0; list-style: none; }
+.division-card__section li { position: relative; padding-left: 18px; color: #d4d8e4; font-size: 14px; line-height: 1.55; }
+.division-card__section li::before {
+  content: ""; position: absolute; top: .62em; left: 0; width: 6px; height: 6px;
+  border-radius: 50%; background: var(--accent);
+}
+.division-card__eligibility { margin-top: auto; padding-top: 18px; }
+details { border-top: 1px dashed rgba(255,255,255,.14); }
+summary {
+  position: relative; padding: 16px 34px 4px 0; color: var(--muted); cursor: pointer;
+  font: 700 13px/1.4 "Montserrat",sans-serif; list-style: none;
+}
+summary::-webkit-details-marker { display: none; }
+summary::after {
+  content: "+"; position: absolute; top: 12px; right: 0; display: grid; place-items: center;
+  width: 23px; height: 23px; border-radius: 7px; background: rgba(255,255,255,.07);
+  color: var(--accent); font-size: 17px;
+}
+details[open] summary::after { content: "–"; }
+.division-card__eligibility p { margin: 12px 0 0; color: var(--muted); font-size: 13px; }
+
+/* Long-form regulations card */
+.container > .divisions:not(:has(> h1:only-child)) {
+  padding: clamp(28px, 5vw, 58px);
+}
+.divisions > h1 {
+  margin-top: 52px;
+  padding-top: 42px;
+  border-top: 1px solid var(--line);
+}
+.divisions > h1:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+.divisions h2 {
+  display: flex; align-items: center; gap: 12px;
+  margin: 38px 0 14px; color: #fff;
+  font: 750 clamp(18px,2vw,22px)/1.25 "Montserrat",sans-serif;
+}
+.divisions h2::before {
+  content: ""; flex: 0 0 8px; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--cyan); box-shadow: 0 0 0 6px rgba(0,212,255,.09);
+}
+.divisions ul, .divisions ol { margin: 15px 0 22px; padding-left: 1.5rem; color: #d7dbe7; }
+.divisions li { margin: 9px 0; padding-left: 5px; }
+.divisions li::marker { color: var(--cyan); font-weight: 800; }
+.divisions ul strong { color: #fff; }
+.divisions p + ul, .divisions p + ol {
+  padding: 18px 20px 18px 42px;
+  border: 1px solid var(--line); border-radius: 14px;
+  background: rgba(255,255,255,.025);
+}
+.divisions > p > strong, .divisions > p strong { color: #fff; }
+.container > .divisions:last-child {
+  background: linear-gradient(135deg, rgba(255,184,0,.11), rgba(18,20,31,.98) 52%);
+}
+.container > .divisions:last-child::before { background: var(--gold); }
+.container > .divisions:last-child h2::before { background: var(--gold); box-shadow: 0 0 0 6px rgba(255,184,0,.1); }
+
+/* Footer kept structurally untouched */
+.footer { background: #0b0c12; padding: 64px 0 30px; text-align: center; color: #f0f2f8; border-top: 1px solid var(--line); }
+.footer-content { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+.footer-logo { margin-bottom: 38px; }
+.footer-logo img { width: 120px; height: 80px; object-fit: contain; }
+.follow-text { margin: 0 0 24px; color: var(--muted); font-size: 17px; }
+.social-icons { display: flex; justify-content: center; gap: 16px; margin-bottom: 32px; }
+.social-icon {
+  display: grid; place-items: center; width: 48px; height: 48px; border: 1px solid var(--line);
+  border-radius: 13px; background: rgba(255,255,255,.06); color: #fff; text-decoration: none;
+  transition: .2s ease;
+}
+.social-icon:hover { background: var(--cyan); color: #05060a; transform: translateY(-3px); }
+.login-btn {
+  display: inline-block; margin-bottom: 54px; padding: 11px 28px;
+  border: 2px solid var(--cyan); border-radius: 10px; color: var(--cyan);
+  font: 700 15px/1.4 "Montserrat",sans-serif; text-decoration: none; transition: .2s ease;
+}
+.login-btn:hover { background: var(--cyan); color: #05060a; }
+.footer-bottom {
+  display: flex; justify-content: center; gap: 28px; flex-wrap: wrap;
+  padding-top: 24px; border-top: 1px solid var(--line);
+}
+.footer-bottom p { margin: 0; color: #858b9d; font-size: 14px; }
+.powered-by a { color: var(--cyan); text-decoration: none; }
+
+@media (max-width: 991px) {
+  .division-cards { grid-template-columns: 1fr; }
+  .division-card { min-height: 0; }
+}
+@media (max-width: 700px) {
+  body { font-size: 15px; }
+  .regulations { padding: 18px 14px 64px; }
+  .back-btn { margin-bottom: 18px; }
+  .header { border-radius: 20px; }
+  .header h1 { letter-spacing: -.025em; }
+  .judging, .registration, .winners, .representation, .divisions,
+  .divisions-showcase { border-radius: 16px; }
+  .divisions-showcase { padding: 28px 16px; }
+  .division-card { padding: 25px 20px; }
+  .container > .divisions:not(:has(> h1:only-child)) { padding: 26px 20px; }
+  .divisions p + ul, .divisions p + ol { padding-left: 34px; }
+  .divisions h2 { margin-top: 31px; }
+  .footer { padding-top: 48px; }
+  .footer-bottom { flex-direction: column; gap: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+}
