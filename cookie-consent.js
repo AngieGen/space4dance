@@ -96,7 +96,7 @@
         <div class="cookie-banner-heading"><span class="cookie-banner-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><div><span>SPACE4DANCE / PRIVACY</span><h2 id="cookie-title">Your cookie choices</h2></div></div>
         <div class="cookie-banner-copy">
           <p>Space4Dance uses necessary browser storage to keep the website working and optional analytics to understand how the site is used. We do not currently use advertising or third-party marketing cookies.</p>
-          <p class="cookie-legal">Controller: TK EVENTS SIA, Rīga, Latvia. Your choice is stored for 6 months and can be changed at any time using “Cookie settings”. Read our <a href="cookie-policy.html">Cookie Policy</a>.</p>
+          <p class="cookie-legal">Controllers: SIA “TK Events” and SIA “WOD Latvia”, Rīga, Latvia. Your choice is stored for 6 months and can be changed at any time using “Cookie settings”. Read our <a href="cookie-policy.html">Cookie Policy</a>.</p>
         </div>
         <div class="cookie-banner-options">
           <div class="cookie-option"><div><strong>Necessary <b>ALWAYS ACTIVE</b></strong><small>Required for privacy choices, security and essential website functions. These cannot be switched off.</small></div><label class="cookie-switch"><input type="checkbox" checked disabled /><span></span></label></div>
