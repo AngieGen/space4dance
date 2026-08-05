@@ -54,36 +54,43 @@ a{color:inherit} img,video{display:block;max-width:100%}
 .tickets-btn{background:#fff;color:#111}
 .intro-social{position:absolute;right:0;bottom:62px;display:flex;gap:8px}
 .intro-social-icon{width:44px;height:44px;display:grid;place-items:center;border:1px solid var(--line);border-radius:4px;background:rgba(9,9,11,.55);color:#fff;text-decoration:none}
+.intro-anniversary{position:absolute;right:0;top:50%;width:clamp(132px,12vw,170px);aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.45);border-radius:50%;background:rgba(10,9,11,.38);box-shadow:inset 0 0 0 8px rgba(255,255,255,.035),0 18px 50px rgba(0,0,0,.28);backdrop-filter:blur(8px);text-align:center;transform:translateY(-50%) rotate(7deg)}
+.intro-anniversary::before{content:"";position:absolute;inset:-7px;border:1px dashed rgba(244,122,33,.72);border-radius:inherit}
+.intro-anniversary strong{color:var(--orange);font:900 clamp(40px,4.8vw,68px)/.8 "Montserrat",sans-serif;letter-spacing:-.08em}
+.intro-anniversary span{margin-top:11px;color:#fff;font:700 clamp(8px,.75vw,10px)/1.35 "Montserrat",sans-serif;letter-spacing:.08em;text-transform:uppercase}
 
-.events{position:relative;background:var(--paper);color:var(--ink)}
-.events::before{content:"";position:absolute;left:0;right:0;top:-30px;height:31px;background:var(--paper);clip-path:polygon(0 100%,100% 0,100% 100%)}
+.events{position:relative;overflow:hidden;background:radial-gradient(circle at 8% 18%,rgba(223,47,34,.15),transparent 29rem),radial-gradient(circle at 92% 72%,rgba(244,122,33,.1),transparent 31rem),#0d0c0f;color:#fff}
+.events::before{content:"";position:absolute;left:0;right:0;top:-30px;height:31px;background:#0d0c0f;clip-path:polygon(0 100%,100% 0,100% 100%)}
+.events::after{content:"EUROPESTAGE";position:absolute;right:-.04em;top:130px;color:rgba(255,255,255,.018);font:900 clamp(92px,18vw,270px)/.8 "Montserrat",sans-serif;letter-spacing:-.09em;pointer-events:none}
+.events>.container,.event-cards{position:relative;z-index:1}
 .section-header{max-width:900px;margin:0 auto 50px;text-align:center}
-.section-eyebrow{display:block;margin-bottom:13px;color:var(--red);font:750 10px/1.2 "Montserrat",sans-serif;letter-spacing:.18em}
-.section-header h1{margin:0;font:900 clamp(36px,6vw,72px)/.98 "Montserrat",sans-serif;letter-spacing:-.055em}
+.section-eyebrow{display:block;margin-bottom:13px;color:var(--orange);font:750 10px/1.2 "Montserrat",sans-serif;letter-spacing:.18em}
+.section-header h1,.section-header .section-title{margin:0;font-family:"Montserrat",sans-serif!important;font-size:clamp(36px,6vw,72px)!important;font-weight:900!important;font-stretch:normal;line-height:.98!important;letter-spacing:-.055em!important}
 .section-header h1 em{color:var(--red);font-style:normal}
-.section-intro{margin:17px 0 0;color:#666;font-size:16px}
+.section-intro{margin:17px 0 0;color:#a6a1a5;font-size:16px}
 .event-cards{width:min(1220px,calc(100% - 40px));margin:0 auto;display:grid;gap:24px}
-.event-card{--accent:var(--red);min-height:590px;display:grid;grid-template-columns:44% 56%;overflow:hidden;border:1px solid rgba(11,11,13,.13);border-radius:8px;background:#fff;box-shadow:0 26px 65px rgba(34,25,20,.09)}
+.event-card{--accent:var(--red);min-height:590px;display:grid;grid-template-columns:44% 56%;overflow:hidden;border:1px solid rgba(255,255,255,.12);border-radius:12px;background:linear-gradient(145deg,#19171b,#111013);box-shadow:0 30px 80px rgba(0,0,0,.3)}
 .event-card:nth-child(2){--accent:var(--orange);grid-template-columns:56% 44%}
 .event-card:nth-child(2) .info-turk{grid-column:1;grid-row:1}
 .video-container{position:relative;min-height:590px;overflow:hidden;background:#171418}
-.video-container::after{content:"DESTINATION";position:absolute;z-index:2;left:19px;top:20px;padding:6px 8px;background:rgba(10,9,10,.55);color:#fff;font:700 8px/1.2 "Montserrat",sans-serif;letter-spacing:.12em}
+.video-container::after{content:"DESTINATION  /  01";position:absolute;z-index:2;left:19px;top:20px;padding:7px 9px;border:1px solid rgba(255,255,255,.17);background:rgba(10,9,10,.58);color:#fff;font:700 8px/1.2 "Montserrat",sans-serif;letter-spacing:.12em;backdrop-filter:blur(7px)}
+.event-card:nth-child(2) .video-container::after{content:"DESTINATION  /  02"}
 .event-video{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
 .event-card:hover .event-video{transform:scale(1.025)}
 .video-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(10,8,9,.72))}
 .event-location{position:absolute;z-index:2;left:21px;bottom:21px;color:#fff;font:700 12px/1.2 "Montserrat",sans-serif}
 .event-location i{color:var(--accent);margin-right:7px}
-.card-content{position:relative;padding:clamp(38px,6vw,72px);display:flex;flex-direction:column;justify-content:center}
+.card-content{position:relative;padding:clamp(38px,6vw,72px);display:flex;flex-direction:column;justify-content:center;background:linear-gradient(135deg,rgba(255,255,255,.026),transparent 55%)}
 .card-content::before{content:"";position:absolute;left:0;top:55px;bottom:55px;width:3px;background:var(--accent)}
 .info-turk::before{left:auto;right:0}
-.event-title{margin:0 0 14px;font:900 clamp(34px,5vw,62px)/1 "Montserrat",sans-serif;letter-spacing:-.055em}
-.event-date{width:fit-content;margin-bottom:22px;padding:8px 12px;border-left:3px solid var(--accent);background:#f6f1eb;color:var(--accent);font:800 14px/1.2 "Montserrat",sans-serif}
-.event-venue{color:#69666a;font-size:14px}.event-venue i{width:20px;color:var(--accent)}
-.spots-info{display:flex;align-items:center;justify-content:space-between;margin:27px 0 22px;padding:14px 16px;border:1px solid rgba(11,11,13,.1);border-radius:4px;background:#faf8f4}
+.event-title{max-width:650px;margin:0 0 17px;color:#fff;font-family:"Montserrat",sans-serif!important;font-size:clamp(34px,5vw,62px)!important;font-weight:900!important;font-stretch:normal;line-height:.94!important;letter-spacing:-.06em!important;text-transform:uppercase}
+.event-date{width:fit-content;margin-bottom:22px;padding:9px 13px;border-left:3px solid var(--accent);background:rgba(255,255,255,.055);color:#fff;font:800 14px/1.2 "Montserrat",sans-serif}
+.event-venue{color:#aaa5a0;font-size:14px}.event-venue i{width:20px;color:var(--accent)}
+.spots-info{display:flex;align-items:center;justify-content:space-between;margin:27px 0 22px;padding:14px 16px;border:1px solid rgba(255,255,255,.1);border-radius:5px;background:rgba(255,255,255,.045)}
 .spots-left{display:flex;align-items:center;gap:10px}.spots-left iframe{border:0}.spots-icon{color:var(--accent)}.spots-text{color:#777;font-size:11px}
 .countdown-section{display:none}
 .card-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:5px}
-.btn-action{min-height:48px;padding:0 20px;display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(11,11,13,.13);border-radius:4px;font:700 12px/1.2 "Montserrat",sans-serif;text-decoration:none}
+.btn-action{min-height:48px;padding:0 20px;display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.13);border-radius:4px;font:700 12px/1.2 "Montserrat",sans-serif;text-decoration:none;transition:transform .2s,border-color .2s,background .2s}
 .btn-action:hover{color:inherit;transform:translateY(-2px)}
 .btn-compete{background:var(--accent);color:#fff}.btn-details{background:#111;color:#fff}
 
@@ -112,7 +119,7 @@ a{color:inherit} img,video{display:block;max-width:100%}
 }
 @media(max-width:700px){
   :root{--nav-h:74px}.navbar{padding:6px 0!important}.navbar-container{width:calc(100% - 20px);height:62px}.navbar-logo{min-width:126px;padding:0 16px}.navbar-logo img{width:86px}
-  .intro-overlay{width:calc(100% - 28px);align-items:center;text-align:center}.intro-logo img{object-position:center}.intro-social{right:0}.intro-buttons{justify-content:center;flex-wrap:wrap}
+  .intro-overlay{width:calc(100% - 28px);padding-bottom:42px;align-items:center;text-align:center}.intro-logo img{object-position:center}.intro-social{right:0}.intro-buttons{justify-content:center;flex-wrap:wrap}.intro-anniversary{position:relative;right:auto;top:auto;width:112px;margin-top:27px;transform:rotate(6deg)}.intro-anniversary strong{font-size:42px}.intro-anniversary span{font-size:7px}
   .event-cards{width:calc(100% - 28px)}.event-card,.event-card:nth-child(2){grid-template-columns:1fr;min-height:0}.video-container,.event-card:nth-child(2) .video-turk{grid-column:1;grid-row:1;min-height:430px}.card-content,.event-card:nth-child(2) .info-turk{grid-column:1;grid-row:2;padding:35px 23px}.card-content::before,.info-turk::before{left:23px;right:23px;top:0;bottom:auto;width:auto;height:3px}
   .event-title{font-size:36px}.spots-info{align-items:flex-start;flex-direction:column}.card-actions{display:grid}.btn-action{justify-content:center}
   .footer{padding:52px 0 24px;text-align:center}.footer::before{background:linear-gradient(90deg,var(--red) 0 60%,var(--orange) 60% 78%,transparent 78%)}
