@@ -38,7 +38,6 @@ body {
 body.menu-open {
   overflow: hidden;
 }
-main{display:flex;flex-direction:column}
 main{width:100%;min-width:0;overflow:hidden;display:flex;flex-direction:column;align-items:stretch}
 main>section{width:100%;min-width:0}
 #hero{order:0}#events-section{order:1}#projects-section{order:2}.impact-section{order:3}#why-us-section{order:4}#about-section{order:5}#partner-section{order:6}
@@ -1435,19 +1434,14 @@ button {
 .partner-logo-item {
   width: clamp(180px, 18vw, 250px);
   height: 108px;
-  padding: 23px 29px;
   padding: 20px 30px;
   display: grid;
   place-items: center;
-  border: 1px solid rgba(13, 14, 20, 0.1);
-  border-radius: 4px;
-  background: #111219;
   border: 0;
   background: transparent;
 }
 .partner-logo-item img { width: 100%; height: 100%; object-fit: contain; filter: grayscale(1); opacity: 0.78; transition: filter 0.3s, opacity 0.3s, transform 0.3s; }
 .partner-logo-item:hover img { filter: grayscale(0); opacity: 1; transform: scale(1.035); }
-.partner-logo-light { background: #fff; }
 .partner-logo-light { background: transparent; }
 @keyframes partner-scroll { to { transform: translateX(calc(-50% - 7px)); } }
 .partner-card {
@@ -1475,9 +1469,6 @@ button {
   color: #fff;
   font-size: clamp(35px, 5vw, 58px);
   line-height: 0.97;
-}
-.partner-copy h2 {
-  color: #fff;
 }
 .partner-copy h2 em {
   color: #ffb27a;
@@ -1962,8 +1953,6 @@ button {
   .chat-body{min-height:0;padding:22px 12px}
   .review-message{width:93%}
 }
-@media (max-width:780px){.proof-layout{grid-template-columns:1fr}.reviews-chat{width:min(100%,580px);margin:8px auto 0}.chat-body{min-height:470px}}
-@media (max-width:480px){.proof-points{grid-template-columns:1fr}.proof-card{min-height:180px}.chat-body{min-height:0;padding:22px 12px}.review-message{width:93%}}
 @media (max-width:360px){
   .shell,.hero-content{width:calc(100% - 24px)}
   .nav-container{width:calc(100% - 12px)}
@@ -1998,3 +1987,14 @@ button {
   .proof-card,
   .review-message { opacity: 1; transform: none; }
 }
+
+/* Cookie consent */
+[hidden]{display:none!important}.cookie-modal-open{overflow:hidden}
+.cookie-banner{position:fixed;z-index:3000;right:18px;bottom:18px;width:min(640px,calc(100% - 36px));max-height:calc(100svh - 36px);padding:clamp(24px,4vw,36px);overflow:auto;display:block;border:1px solid rgba(255,255,255,.16);border-radius:16px;background:radial-gradient(circle at 100% 0,rgba(40,100,220,.2),transparent 22rem),rgba(12,13,19,.985);box-shadow:0 30px 100px rgba(0,0,0,.55);color:#fff;backdrop-filter:blur(20px)}
+.cookie-banner-heading{display:flex;align-items:center;gap:15px;margin-bottom:21px}.cookie-banner-heading>div{display:flex;flex-direction:column;gap:4px}.cookie-banner-heading>div>span,.cookie-panel-label{color:#ff9f61;font:750 8px/1.2 "Montserrat",sans-serif;letter-spacing:.17em}.cookie-banner-heading h2{margin:0;font:900 clamp(25px,4vw,34px)/1 "Montserrat",sans-serif;letter-spacing:-.045em}.cookie-banner-mark{flex:0 0 48px;width:48px;height:48px;padding:13px;display:grid;grid-template-columns:1fr 1fr;gap:4px;border-radius:12px;background:var(--acid)}.cookie-banner-mark i{display:block;border-radius:50%;background:#111}.cookie-banner-copy p{margin:0;color:#d1d2d7;font-size:13px;line-height:1.65}.cookie-banner-copy .cookie-legal{margin-top:13px;color:#858791;font-size:10px}.cookie-banner-copy a{color:#fff;font-weight:700;text-underline-offset:3px}.cookie-banner-options{display:grid;gap:10px;margin-top:24px}.cookie-banner .cookie-option{padding:18px;display:grid;grid-template-columns:1fr 48px;gap:20px;align-items:center;border:1px solid rgba(255,255,255,.12);border-radius:8px;background:rgba(255,255,255,.045)}.cookie-banner .cookie-option strong b{margin-left:6px;color:#7c7e87;font:750 7px/1.2 "Montserrat",sans-serif;letter-spacing:.1em}.cookie-banner .cookie-option small{color:#a5a7ae}.cookie-banner-actions{margin-top:20px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.cookie-btn{min-height:48px;padding:0 13px;border:1px solid rgba(255,255,255,.17);border-radius:24px;background:rgba(255,255,255,.06);color:#fff;font:750 10px/1.2 "Montserrat",sans-serif;cursor:pointer}.cookie-btn:hover{border-color:var(--acid)}.cookie-btn-primary{border-color:var(--blue);background:var(--blue);color:#fff}.cookie-btn-save{border-color:var(--coral);background:var(--coral);color:#111}.cookie-btn-text{border-color:transparent;background:transparent;text-decoration:underline;text-underline-offset:3px}
+.cookie-modal{position:fixed;z-index:3100;inset:0;display:grid;place-items:center;padding:20px}.cookie-modal-backdrop{position:absolute;inset:0;background:rgba(5,6,9,.76);backdrop-filter:blur(8px)}.cookie-panel{position:relative;z-index:1;width:min(580px,100%);max-height:min(760px,calc(100svh - 40px));overflow:auto;padding:clamp(25px,5vw,42px);border:1px solid rgba(255,255,255,.14);border-radius:7px;background:#12131a;color:#fff;box-shadow:0 30px 100px rgba(0,0,0,.55)}.cookie-panel h2{margin:8px 0 9px;font:900 clamp(30px,6vw,48px)/1 "Montserrat",sans-serif;letter-spacing:-.05em}.cookie-panel>p{margin:0 0 25px;color:#a9abb3;font-size:13px}.cookie-close{position:absolute;top:14px;right:14px;width:38px;height:38px;border:1px solid rgba(255,255,255,.13);border-radius:4px;background:transparent;color:#fff;font-size:24px;cursor:pointer}
+.cookie-option{padding:18px 0;display:grid;grid-template-columns:1fr 48px;gap:20px;align-items:center;border-top:1px solid rgba(255,255,255,.1)}.cookie-option div{display:flex;flex-direction:column;gap:5px}.cookie-option strong{font:750 13px/1.2 "Montserrat",sans-serif}.cookie-option small{color:#93959e;font-size:11px;line-height:1.45}.cookie-switch{position:relative;width:46px;height:25px}.cookie-switch input{position:absolute;opacity:0}.cookie-switch span{position:absolute;inset:0;border-radius:20px;background:#3a3b43;cursor:pointer;transition:.2s}.cookie-switch span::after{content:"";position:absolute;top:4px;left:4px;width:17px;height:17px;border-radius:50%;background:#fff;transition:.2s}.cookie-switch input:checked+span{background:var(--acid)}.cookie-switch input:checked+span::after{transform:translateX(21px)}.cookie-switch input:disabled+span{cursor:not-allowed;opacity:.65}.cookie-panel-actions{display:flex;gap:9px;margin-top:26px}.cookie-settings-link{padding:0;border:0;background:transparent;color:inherit;font:inherit;cursor:pointer;text-decoration:none}.cookie-settings-link:hover{color:#fff}
+.policy-page{background:var(--paper);color:var(--ink)}.policy-header{padding:120px 0 65px;background:#0b0c12;color:#fff}.policy-header .section-index{color:var(--acid)}.policy-header h1{max-width:900px;margin:0;font:900 clamp(48px,9vw,110px)/.88 "Montserrat",sans-serif;letter-spacing:-.075em;text-transform:uppercase}.policy-header h1 em{color:var(--acid);font-style:normal}.policy-main{padding:70px 0 100px}.policy-layout{display:grid;grid-template-columns:240px 1fr;gap:clamp(40px,8vw,100px)}.policy-nav{position:sticky;top:110px;align-self:start;padding:20px;border-left:3px solid var(--acid);background:#ebe7df}.policy-nav strong{display:block;margin-bottom:8px;font:800 11px/1.2 "Montserrat",sans-serif}.policy-nav a{display:block;padding:7px 0;color:#646169;font-size:12px;text-decoration:none}.policy-content{max-width:800px}.policy-content section{padding:0 0 42px;margin-bottom:42px;border-bottom:1px solid rgba(11,12,18,.12)}.policy-content h2{margin:0 0 16px;font:850 clamp(27px,4vw,40px)/1.05 "Montserrat",sans-serif;letter-spacing:-.04em}.policy-content h3{font:800 17px/1.2 "Montserrat",sans-serif}.policy-content p,.policy-content li{color:#514f56;line-height:1.75}.policy-table{width:100%;border-collapse:collapse;font-size:13px}.policy-table th,.policy-table td{padding:13px;text-align:left;border:1px solid rgba(11,12,18,.12);vertical-align:top}.policy-table th{background:#e7e1d7;font-family:"Montserrat",sans-serif}
+@media(max-width:780px){.cookie-banner{right:10px;bottom:10px;width:calc(100% - 20px);max-height:calc(100svh - 20px);padding:22px}.cookie-banner-actions{grid-template-columns:1fr 1fr}.cookie-btn-save{grid-column:span 2}.cookie-panel-actions{display:grid}.policy-layout{grid-template-columns:1fr}.policy-nav{position:static}.policy-table{display:block;overflow-x:auto}}
+@media(max-width:420px){.cookie-banner{border-radius:12px}.cookie-banner-heading{align-items:flex-start}.cookie-banner-mark{flex-basis:43px;width:43px;height:43px;padding:11px}.cookie-banner-actions{grid-template-columns:1fr}.cookie-btn-save{grid-column:auto}.cookie-panel{padding:27px 20px}.cookie-option{grid-template-columns:1fr 46px}}
